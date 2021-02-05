@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CategoryFilter from '../Filters/categoryFilter'
 import LocationFilter from '../Filters/locationFilter'
-import List from './List'
+import List from './list'
 
 const Associations = () => {
 
