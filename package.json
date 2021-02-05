@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "irrigate-prod-client",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Irrigate donation web app, client",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Rapheal Pinto Gregorio <raphael_pinto@outlook.com>",
   "dependencies": {
     "gatsby": "^2.32.0",
     "gatsby-image": "^2.5.0",
@@ -39,7 +39,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/raphaelpg/irrigate-prod-client"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
