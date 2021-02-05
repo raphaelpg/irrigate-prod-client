@@ -1,4 +1,5 @@
-export const serverUrl = `http://localhost:8080/api/causes`;
+export const serverUrl = `http://104.254.246.62/api/causes`;
+// export const serverUrl = `http://localhost:8080/api/causes`;
 
 export const dataCategories = [
 	'All', 
