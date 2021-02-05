@@ -1,0 +1,12 @@
+/*Header section*/
+header{
+	box-shadow: 0px 4px 6px grey;
+	position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+.header-elements-container{
+	margin: 0 auto;
+  max-width: $site-width;
+  padding: 1rem 0;
+}

@@ -1,0 +1,23 @@
+/*COLORS*/
+$irrigateBackground: darkgreen;
+$background-primary: darkgreen;
+$background-secondary: #477843;
+$irrigateBackground: darkgreen;
+$irrigateFontColor: beige;
+$irrigateDarkFontColor: #4F4F4F;
+$causeListWidth: 1110px;
+$causeFontColor: #454545;
+$standardShadow: 3px 3px 10px 0px grey;
+
+header {
+	background: linear-gradient(45deg, $background-secondary, $background-primary);
+}
+
+.brand-container {
+  color: $irrigateFontColor;
+}
+
+footer {
+	background: linear-gradient(45deg, $background-primary, $background-secondary);
+  color: $irrigateFontColor;
+}
