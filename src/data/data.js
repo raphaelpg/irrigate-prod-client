@@ -1,4 +1,4 @@
-export const serverUrl = `https://104.254.246.62/api/causes`;
+export const serverUrl = `https://www.future-space.org/api/causes`;
 // export const serverUrl = `http://localhost:8080/api/causes`;
 
 export const dataCategories = [
