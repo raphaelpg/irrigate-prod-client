@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import Fade from 'react-reveal'
-import { serverUrl } from '../../data/data.js'
+import Fade from 'react-reveal/Fade'
+import { IAssociation, serverUrl } from '../../data/data'
 // import { dataCauses } from '../../mock/database.js'
 
-const List = (props) => {
+interface IListProps {
+	selectedCategory: string,
+  selectedLocation: string
+}
 
-	const [ associations, setAssociations ] = useState([])
+const List: React.FC<IListProps> = (props) => {
+
+	const [ associations, setAssociations ] = useState<IAssociation[]>([])
 
 	useEffect(() => {
 		fetch(serverUrl)
@@ -18,7 +23,7 @@ const List = (props) => {
 	return (
 		<div className="causes-list-container">
 			{associations
-				.filter(association => {
+				.filter((association: any) => {
 					if (props.selectedCategory === 'All' && props.selectedLocation !=='Anywhere') {
 						return association.continent === props.selectedLocation
 					} else if (props.selectedCategory !== 'All' && props.selectedLocation ==='Anywhere') {

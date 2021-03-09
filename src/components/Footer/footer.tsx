@@ -1,7 +1,11 @@
 import React from "react"
 import Brand from "../brand"
 
-const Footer = ({ siteTitle }) => (
+interface IFooterProps {
+  siteTitle: string
+}
+
+const Footer: React.FC<IFooterProps> = ({ siteTitle }) => (
   <footer>
     <div className="footer-elements-container">
       <Brand siteTitle={siteTitle} />

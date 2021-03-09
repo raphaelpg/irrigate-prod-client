@@ -3,21 +3,21 @@ import CategoryFilter from '../Filters/categoryFilter'
 import LocationFilter from '../Filters/locationFilter'
 import List from './list'
 
-const Associations = () => {
+const Associations: React.FC = () => {
 
-	const [ selectedCategory, setSelectedCategory ] = useState('')
-	const [ selectedLocation, setSelectedLocation ] = useState('')
+	const [ selectedCategory, setSelectedCategory ] = useState<string>('')
+	const [ selectedLocation, setSelectedLocation ] = useState<string>('')
 
 	useEffect(() => {
 		setSelectedCategory('All')
 		setSelectedLocation('Anywhere')
 	}, [])
 
-	const setCategory = (cat) => {
+	const setCategory = (cat: string) => {
 		setSelectedCategory(cat)
 	}
 
-	const setLocation = (location) => {
+	const setLocation = (location: string) => {
 		setSelectedLocation(location)
 	}
 

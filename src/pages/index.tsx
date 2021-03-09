@@ -7,7 +7,7 @@ import Associations from "../components/Associations/associations"
 import SEO from "../components/seo"
 import "../style/main.scss"
 
-const IndexPage = () => (
+const IndexPage: React.FC = () => (
   <Layout>
     <SEO title="Home" />
     <Introduction />

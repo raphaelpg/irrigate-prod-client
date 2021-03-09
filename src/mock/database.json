@@ -1,4 +1,4 @@
-export const dataCauses = [
+[
   {
     "_id": "5fc4068c97a8770e2b58f26a",
     "date": "1606681431743",

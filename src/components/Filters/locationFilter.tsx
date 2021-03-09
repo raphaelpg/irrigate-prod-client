@@ -1,17 +1,21 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { UserContext } from '../../context/UserContext'
+import { IUserContext, UserContext } from '../../context/UserContext'
 import FilterLogo from '../Images/filterLogo'
 
-const LocationFilter = (props) => {
+interface ILocationFilterProps {
+	setLocation: (location: string) => void;
+}
 
-	const { locations } = useContext(UserContext)
-	const [ selectedLocation, setSelectedLocation ] = useState([])
+const LocationFilter: React.FC<ILocationFilterProps> = (props) => {
+	const componentContext: IUserContext | null = useContext(UserContext)
+	const locations = componentContext?.locations
+	const [ selectedLocation, setSelectedLocation ] = useState<string>()
 
 	useEffect(() => {
 		setSelectedLocation('Anywhere')
 	}, [])
 
-	const handleFilterClick = ({ target }) => {
+	const handleFilterClick = ({ target }: any) => {
 		if (target.title) {
       setSelectedLocation(target.title)
       props.setLocation(target.title)
@@ -29,7 +33,7 @@ const LocationFilter = (props) => {
 			<div className="filter-title-container">
         <div className="causes-list-filter-title">Location:</div>
       </div>
-			{locations.map(location => {
+			{locations?.map((location: string) => {
 				return (
 					<div 
 						key={location} 

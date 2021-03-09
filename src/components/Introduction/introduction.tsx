@@ -1,7 +1,7 @@
 import React from 'react'
 import Fade from 'react-reveal/Fade'
 
-const Introduction = () => (
+const Introduction: React.FC = () => (
 	<div className="introduction">
 		<div className="introduction-container">
 			<div className="introduction-left">

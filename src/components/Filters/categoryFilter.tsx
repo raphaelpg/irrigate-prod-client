@@ -1,17 +1,21 @@
 import React, { useState, useEffect, useContext } from 'react'
 import FilterLogo from '../Images/filterLogo'
-import { UserContext } from '../../context/UserContext'
+import { IUserContext, UserContext } from '../../context/UserContext'
 
-const CategoryFilter = (props) => {
+interface ICategoryFilterProps {
+	setCategory: (category: string) => void
+}
 
-	const { categories } = useContext(UserContext)
-	const [ selectedCategory, setSelectedCategory ] = useState('')
+const CategoryFilter: React.FC<ICategoryFilterProps> = (props) => {
+	const componentContext: IUserContext | null = useContext(UserContext)
+	const categories = componentContext?.categories
+	const [ selectedCategory, setSelectedCategory ] = useState<string>('')
 
 	useEffect(() => {
 		setSelectedCategory('All')
 	}, [])
 
-	const handleFilterClick = ({ target }) => {
+	const handleFilterClick = ({ target }: any) => {
 		if (target.title) {
       setSelectedCategory(target.title)
       props.setCategory(target.title)
@@ -29,7 +33,7 @@ const CategoryFilter = (props) => {
 			<div className="filter-title-container">
         <div className="causes-list-filter-title">Category:</div>
       </div>
-			{categories.map(cat => {
+			{categories?.map((cat: string) => {
 				return (
 					<div 
 						key={cat} 

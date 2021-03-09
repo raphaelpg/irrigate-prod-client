@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react"
-import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { UserContext } from "../context/UserContext"
 import Header from "./Header/header"
 import Footer from "./Footer/footer"
-import { dataCategories, dataLocations } from "../data/data.js"
+import { dataCategories, dataLocations } from "../data/data"
 
-const Layout = ({ children }) => {
+const Layout: React.FC = ({ children }) => {
   
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -18,8 +17,8 @@ const Layout = ({ children }) => {
     }
   `)
 
-  const [ categories, setCategories ] = useState([])
-  const [ locations, setLocations ] = useState([])
+  const [ categories, setCategories ] = useState<string[]>([])
+  const [ locations, setLocations ] = useState<string[]>([])
 
   useEffect(() => {
     setCategories([...dataCategories])
@@ -37,10 +36,6 @@ const Layout = ({ children }) => {
       </div>
     </UserContext.Provider>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

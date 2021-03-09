@@ -1,8 +1,13 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import PropTypes from 'prop-types';
 
-const FilterLogo = ({ filename }) => (
+interface IFilterLogoProps {
+  filename: string,
+  alt?: string,
+  cat?: string
+}
+
+const FilterLogo: React.FC<IFilterLogoProps> = ({ filename }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -19,7 +24,7 @@ const FilterLogo = ({ filename }) => (
     `}
 
     render={(data) => {
-      const image = data.images.edges.find((n) => n.node.relativePath.includes(filename));
+      const image = data.images.edges.find((n: any) => n.node.relativePath.includes(filename));
 
       if (!image) return null;
 
@@ -28,11 +33,5 @@ const FilterLogo = ({ filename }) => (
     
   />
 );
-
-FilterLogo.propTypes = {
-  filename: PropTypes.string,
-  alt: PropTypes.string,
-  cat: PropTypes.string,
-};
 
 export default FilterLogo;

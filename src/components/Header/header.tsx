@@ -4,7 +4,11 @@ import React from "react"
 import Brand from "../brand"
 // const IrrigateLogo2 = require("../../images/irrigate-icon.png")
 
-const Header = ({ siteTitle }) => (
+interface IHeaderProps {
+  siteTitle: string
+}
+
+const Header: React.FC<IHeaderProps> = ({ siteTitle = '' }) => (
   <header>
       <div className="header-elements-container">
         <Brand siteTitle={siteTitle} />
@@ -12,13 +16,5 @@ const Header = ({ siteTitle }) => (
       </div>
   </header>
 )
-
-/*Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}*/
 
 export default Header
