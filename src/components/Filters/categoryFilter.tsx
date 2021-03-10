@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import FilterLogo from '../Images/filterLogo'
+import FilterLogo from '../Images/FilterLogo'
 import { IUserContext, UserContext } from '../../context/UserContext'
 
 interface ICategoryFilterProps {

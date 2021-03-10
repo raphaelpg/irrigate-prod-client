@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
+import FilterLogo from '../Images/FilterLogo'
 import { IUserContext, UserContext } from '../../context/UserContext'
-import FilterLogo from '../Images/filterLogo'
 
 interface ILocationFilterProps {
 	setLocation: (location: string) => void;

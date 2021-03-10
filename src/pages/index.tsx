@@ -1,10 +1,10 @@
 import React from "react"
 // import { Link } from "gatsby"
 
-import Layout from "../components/layout"
-import Introduction from "../components/Introduction/introduction"
-import Associations from "../components/Associations/associations"
-import SEO from "../components/seo"
+import Layout from "../components/Layout"
+import Introduction from "../components/Introduction/Introduction"
+import Associations from "../components/Associations/Associations"
+import SEO from "../components/Seo"
 import "../style/main.scss"
 
 const IndexPage: React.FC = () => (

@@ -1,5 +1,5 @@
 import React from "react"
-import Brand from "../brand"
+import Brand from "../Brand"
 
 interface IFooterProps {
   siteTitle: string
