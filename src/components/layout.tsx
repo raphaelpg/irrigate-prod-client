@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { UserContext } from "../context/userContext"
+import { UserContext } from "../context/UserContext"
 import Header from "./Header/header"
 import Footer from "./Footer/footer"
 import { dataCategories, dataLocations } from "../data/data"

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import FilterLogo from '../Images/filterLogo'
-import { IUserContext, UserContext } from '../../context/userContext'
+import { IUserContext, UserContext } from '../../context/UserContext'
 
 interface ICategoryFilterProps {
 	setCategory: (category: string) => void

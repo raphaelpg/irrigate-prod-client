@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import FadeIn from '../../effects/fadeIn'
+import FadeIn from '../../effects/FadeIn'
 import { IAssociation, serverUrl } from '../../data/data'
 // import { dataCauses } from '../../mock/database.js'
 
