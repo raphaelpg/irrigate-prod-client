@@ -37,7 +37,7 @@ const List: React.FC<IListProps> = (props) => {
 				.map((association, index) => {
 					const {_id, name, description, link, category, continent, country, address, logo } = association;
 					return(
-						<FadeIn className="cause-display" distance={30} triggerOnce={true} key={index}>
+						<FadeIn className="cause-display" duration={1500} triggerOnce={true} key={index}>
 								<div className="cause-logo-container">
 									<img className="cause-logo" src={logo} alt={name} />
 								</div>

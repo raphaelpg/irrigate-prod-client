@@ -1,8 +1,9 @@
 import React from 'react'
+import FadeIn from '../../effects/FadeIn'
 
 const Introduction: React.FC = () => (
 	<div className="introduction">
-		<div className="introduction-container">
+		<FadeIn className="introduction-container" yDistance={-30}>
 			<div className="introduction-left" >
         	<h2 className="introduction-left-title">Associations: register and receive donations from all over the world</h2>
         	<button className="display-form-add-cause-button" >Register your association</button>
@@ -14,7 +15,7 @@ const Introduction: React.FC = () => (
 	        	<button className="introduction-button" >Monthly subscription</button>
         	</div>
     	</div>
-    </div>
+    </FadeIn>
   </div>
 )
 
