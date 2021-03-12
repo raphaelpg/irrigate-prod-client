@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { UserContext } from "../context/UserContext"
+import { AppContext } from "../context/AppContext"
 import Header from "./Header/header"
 import Footer from "./Footer/footer"
 import { dataCategories, dataLocations } from "../data/data"
@@ -26,7 +26,7 @@ const Layout: React.FC = ({ children }) => {
   }, [])
 
   return (
-    <UserContext.Provider value={{ categories, locations }} >
+    <AppContext.Provider value={{ categories, locations }} >
       <div className="app-container">
         <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
         <div className="main-container">
@@ -34,7 +34,7 @@ const Layout: React.FC = ({ children }) => {
         </div>
         <Footer siteTitle={data.site.siteMetadata?.title || `Title`} />
       </div>
-    </UserContext.Provider>
+    </AppContext.Provider>
   )
 }
 

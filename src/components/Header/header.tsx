@@ -1,8 +1,5 @@
-// import { Link } from "gatsby"
-// import PropTypes from "prop-types"
 import React from "react"
 import Brand from "../brand"
-// const IrrigateLogo2 = require("../../images/irrigate-icon.png")
 
 interface IHeaderProps {
   siteTitle: string

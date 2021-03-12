@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
 import FilterLogo from '../Images/filterLogo'
-import { IUserContext, UserContext } from '../../context/UserContext'
+import { IAppContext, AppContext } from '../../context/AppContext'
 
 interface ICategoryFilterProps {
 	setCategory: (category: string) => void
 }
 
 const CategoryFilter: React.FC<ICategoryFilterProps> = (props) => {
-	const componentContext: IUserContext | null = useContext(UserContext)
+	const componentContext: IAppContext | null = useContext(AppContext)
 	const categories = componentContext?.categories
 	const [ selectedCategory, setSelectedCategory ] = useState<string>('')
 

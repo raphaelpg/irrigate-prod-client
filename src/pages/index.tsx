@@ -12,8 +12,7 @@ const IndexPage: React.FC = () => (
     <SEO title="Home" />
     <Introduction />
     <Associations />
-    {/*<Link to="/contact/">Contact</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>*/}
+    {/*<Link to="/contact/">Contact</Link> <br />*/}
   </Layout>
 )
 

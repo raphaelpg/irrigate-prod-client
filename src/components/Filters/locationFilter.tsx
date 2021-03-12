@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
 import FilterLogo from '../Images/filterLogo'
-import { IUserContext, UserContext } from '../../context/UserContext'
+import { IAppContext, AppContext } from '../../context/AppContext'
 
 interface ILocationFilterProps {
 	setLocation: (location: string) => void;
 }
 
 const LocationFilter: React.FC<ILocationFilterProps> = (props) => {
-	const componentContext: IUserContext | null = useContext(UserContext)
+	const componentContext: IAppContext | null = useContext(AppContext)
 	const locations = componentContext?.locations
 	const [ selectedLocation, setSelectedLocation ] = useState<string>()
 

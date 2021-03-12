@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import FadeIn from '../../effects/FadeIn'
-import { IAssociation, serverUrl } from '../../data/data'
+import { serverUrl } from '../../data/data'
+import { IAssociation } from '../../interfaces/Association'
 // import { dataCauses } from '../../mock/database.js'
 
 interface IListProps {
