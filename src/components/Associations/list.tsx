@@ -14,7 +14,8 @@ const List: React.FC<IListProps> = (props) => {
 	const [ associations, setAssociations ] = useState<IAssociation[]>([])
 
 	useEffect(() => {
-		fetch(serverUrl)
+		fetch(serverUrl + "/api/causes")
+		// fetch("/api/causes")
       .then(response => response.json())
       .then(resultData => {
         setAssociations(resultData)
