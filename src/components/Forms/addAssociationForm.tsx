@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { serverUrl } from '../../data/data'
 import { IAssociation } from '../../interfaces/Association';
+import { IAppContext, AppContext } from '../../context/AppContext'
+
 // import { mockAssociation } from '../../mock/mockAssociation';
 
 interface IAddAssociationForm {
@@ -9,7 +11,10 @@ interface IAddAssociationForm {
 }
 
 const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
-  const [newAssociation, setNewAssociation] = useState<IAssociation>({
+  const componentContext: IAppContext | null = useContext(AppContext);
+  const refresh = componentContext?.retrieveAssociationsList;
+  const [status, setStatus] = useState<string>('');
+  const initialAssociation = {
     "name": "", 
     "description": "",
     "link": "",
@@ -20,22 +25,12 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
     "logo": "",
     "contactName": "",
     "contactEmail": "",
-  })
-  const [status, setStatus] = useState<string>('')
-  
+  }
+
+  const [newAssociation, setNewAssociation] = useState<IAssociation>(initialAssociation);
+
   const clearAssociationState = () => {
-    setNewAssociation({
-      "name": "", 
-      "description": "",
-      "link": "",
-      "category": "Animal Protection",
-      "continent": "Worldwide",
-      "country": "",
-      "address": "",
-      "logo": "",
-      "contactName": "",
-      "contactEmail": "",
-    });
+    setNewAssociation(initialAssociation);
     (document.getElementById("file-uploaded") as HTMLInputElement).value = "";
   }
 
@@ -79,6 +74,7 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
     .then(result => {
       console.log("res: ", JSON.stringify(result, null, 2));
       clearAssociationState();
+      if (refresh) refresh();
       setStatus('SUCCESS');
     })
     .catch(err => {
