@@ -22,8 +22,6 @@ const List: React.FC<IListProps> = (props) => {
     	})
 	}, [])
 
-	console.log(serverUrl)
-
 	return (
 		<div className="causes-list-container">
 			{associations

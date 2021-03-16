@@ -10,4 +10,6 @@ export interface IAssociation {
 	address?: string,
 	logoName?: string,
 	logo?: string,
+	contactName: string,
+	contactEmail: string,
 }

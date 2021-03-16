@@ -13,14 +13,32 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
     "name": "", 
     "description": "",
     "link": "",
-    "category": "",
-    "continent": "",
+    "category": "Animal Protection",
+    "continent": "Worldwide",
     "country": "",
     "address": "",
     "logo": "",
+    "contactName": "",
+    "contactEmail": "",
   })
   const [status, setStatus] = useState<string>('')
   
+  const clearAssociationState = () => {
+    setNewAssociation({
+      "name": "", 
+      "description": "",
+      "link": "",
+      "category": "Animal Protection",
+      "continent": "Worldwide",
+      "country": "",
+      "address": "",
+      "logo": "",
+      "contactName": "",
+      "contactEmail": "",
+    });
+    (document.getElementById("file-uploaded") as HTMLInputElement).value = "";
+  }
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     setNewAssociation(prevNewAssociation => ({
@@ -30,17 +48,19 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
   }
 
   const handleLogoChange = () => {
-    let filesSelected = document.getElementById("file-uploaded")!.files;
-    let fileSize = filesSelected[0].size
-    if (filesSelected.length > 0 && fileSize <= 50000) {
-      let fileToLoad = filesSelected[0];
-      let fileReader = new FileReader();
-      fileReader.onloadend = () => {
-        setNewAssociation({...newAssociation, logo: fileReader.result as string})
+    let filesSelected = (document.getElementById("file-uploaded") as HTMLInputElement).files;
+    if (filesSelected != null) {
+      let fileSize = filesSelected[0].size
+      if (filesSelected.length > 0 && fileSize <= 50000) {
+        let fileToLoad = filesSelected[0];
+        let fileReader = new FileReader();
+        fileReader.onloadend = () => {
+          setNewAssociation({...newAssociation, logo: fileReader.result as string})
+        }
+        fileReader.readAsDataURL(fileToLoad)
+      } else {
+        alert('File size too big, image must be less than 50kb')
       }
-      fileReader.readAsDataURL(fileToLoad)
-    } else {
-      alert('File size too big, image must be less than 50kb')
     }
   }
 
@@ -58,6 +78,7 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
     .then(res => res.json())
     .then(result => {
       console.log("res: ", JSON.stringify(result, null, 2));
+      clearAssociationState();
       setStatus('SUCCESS');
     })
     .catch(err => {
@@ -70,7 +91,7 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
     <div className="formContainer" style={props.displayForm ? {"display":"flex"} : {"display":"none"}}>
       <button onClick={() => props.handleAssociation(false)}>Close</button>
       <form
-        className="associationFormContainer"
+        className="irrigateForm"
         method="post"
         onSubmit={sendAssociation}
       >
@@ -81,6 +102,7 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
             id="name" 
             placeholder="Association's name" 
             onChange={handleChange}
+            value={newAssociation.name}
             required
           />
         </label>
@@ -91,8 +113,9 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
             id="description" 
             placeholder="Description" 
             onChange={handleChange}
+            value={newAssociation.description}
             required
-          />
+            />
         </label>
         <label>
           <input 
@@ -101,8 +124,9 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
             id="link" 
             placeholder="Website url"
             onChange={handleChange} 
+            value={newAssociation.link}
             required
-          />
+            />
         </label>
         <label>
           Category: 
@@ -111,8 +135,9 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
             id="category" 
             placeholder="Category" 
             onChange={handleChange}
+            value={newAssociation.category}
             required
-          >
+            >
             <option value="Animal Protection">Animal Protection</option>
             <option value="Health">Health</option>
             <option value="Development">Development</option>
@@ -129,7 +154,8 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
             placeholder="Continent" 
             onChange={handleChange}
             required
-          >
+            value={newAssociation.continent}
+            >
            <option value="Worldwide">Worldwide</option>
             <option value="Africa">Africa</option>
             <option value="America">America</option>
@@ -146,8 +172,9 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
             id="country" 
             placeholder="Country" 
             onChange={handleChange}
+            value={newAssociation.country}
             required
-          />
+            />
         </label>
         <label>
           <input 
@@ -156,7 +183,8 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
             id="address" 
             placeholder="Address to receive DAI"
             onChange={handleChange} 
-          />
+            value={newAssociation.address}
+            />
         </label>
         <label >Upload an image: 
           <input
@@ -164,7 +192,29 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
             name="file" 
             type="file"
             onChange={handleLogoChange}
-          />
+            />
+        </label>
+        <label>
+          <input 
+            type="text" 
+            name="contactName" 
+            id="contactName" 
+            placeholder="Contact's name"
+            onChange={handleChange} 
+            value={newAssociation.contactName}
+            required
+            />
+        </label>
+        <label>
+          <input 
+            type="text" 
+            name="contactEmail" 
+            id="contactEmail" 
+            placeholder="Contact's email"
+            onChange={handleChange} 
+            value={newAssociation.contactEmail}
+            required
+            />
         </label>
         <button type="submit">Add Association</button>
       </form>
