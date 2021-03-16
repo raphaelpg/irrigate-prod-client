@@ -3,7 +3,12 @@ import { serverUrl } from '../../data/data'
 import { IAssociation } from '../../interfaces/Association';
 // import { mockAssociation } from '../../mock/mockAssociation';
 
-const AddAssociationForm: React.FC = () => {
+interface IAddAssociationForm {
+  handleAssociation: (status: boolean) => void;
+  displayForm: boolean;
+}
+
+const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
   const [newAssociation, setNewAssociation] = useState<IAssociation>({
     "name": "", 
     "description": "",
@@ -62,9 +67,10 @@ const AddAssociationForm: React.FC = () => {
   }
 
   return(
-    <div className="formContainer">
+    <div className="formContainer" style={props.displayForm ? {"display":"flex"} : {"display":"none"}}>
+      <button onClick={() => props.handleAssociation(false)}>Close</button>
       <form
-        className="formContainer"
+        className="associationFormContainer"
         method="post"
         onSubmit={sendAssociation}
       >
