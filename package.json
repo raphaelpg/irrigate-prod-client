@@ -24,6 +24,7 @@
     "sass": "^1.32.6"
   },
   "devDependencies": {
+    "@types/webpack-env": "^1.16.0",
     "prettier": "2.2.1"
   },
   "keywords": [

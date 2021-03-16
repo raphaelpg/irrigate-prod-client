@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
-import FilterLogo from '../Images/filterLogo'
 import { IAppContext, AppContext } from '../../context/AppContext'
-// import animalProtection from '../../images/Animal Protection.jpg'
+const images = require.context('../../images', true)
 
 interface ICategoryFilterProps {
 	setCategory: (category: string) => void
@@ -45,8 +44,7 @@ const CategoryFilter: React.FC<ICategoryFilterProps> = (props) => {
 						role="button" 
 						tabIndex={0}
 					>
-						<FilterLogo filename={cat}/>
-						{/* <img className="cause-filter-logo" alt={cat} src={animalProtection} name={cat} /> */}
+						<img className="cause-filter-logo" alt={cat} src={images(`./${cat}.jpg`)} name={cat} />
 						<div className="causes-list-filter-name">{cat}</div>
 					</div>
 				)

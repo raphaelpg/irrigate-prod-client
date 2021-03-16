@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
-import FilterLogo from '../Images/filterLogo'
 import { IAppContext, AppContext } from '../../context/AppContext'
+const images = require.context('../../images', true)
 
 interface ILocationFilterProps {
 	setLocation: (location: string) => void;
@@ -44,7 +44,7 @@ const LocationFilter: React.FC<ILocationFilterProps> = (props) => {
 						role="button" 
 						tabIndex={0}
 					>
-						<FilterLogo filename={location}/>
+						<img className="cause-filter-logo" alt={location} src={images(`./${location}.jpg`)} name={location} />
 						<div className="causes-list-filter-name">{location}</div>
 					</div>
 				)
