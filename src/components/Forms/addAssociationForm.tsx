@@ -85,55 +85,54 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
 
   return(
     <div className="formContainer" style={props.displayForm ? {"display":"flex"} : {"display":"none"}}>
-      <button onClick={() => props.handleAssociation(false)}>Close</button>
+      <div className="formTitle">
+        <h2>Tell us more about your association</h2>
+        <button className="closeButton" onClick={() => props.handleAssociation(false)}>x</button>
+      </div> 
       <form
         className="irrigateForm"
         method="post"
         onSubmit={sendAssociation}
       >
-        <label>
+        <label className="formLabel">Association's name:
           <input 
             type="text" 
             name="name" 
             id="name" 
-            placeholder="Association's name" 
             onChange={handleChange}
             value={newAssociation.name}
             required
           />
         </label>
-        <label>
+        <label className="formLabel">Description:
           <input 
-            type="textarea" 
+            type="text" 
             name="description" 
             id="description" 
-            placeholder="Description" 
             onChange={handleChange}
             value={newAssociation.description}
             required
-            />
+          />
         </label>
-        <label>
+        <label className="formLabel">Website url:
           <input 
             type="text" 
             name="link" 
             id="link" 
-            placeholder="Website url"
             onChange={handleChange} 
             value={newAssociation.link}
             required
             />
         </label>
-        <label>
+        <label className="formLabel">
           Category: 
           <select 
             name="category" 
             id="category" 
-            placeholder="Category" 
             onChange={handleChange}
             value={newAssociation.category}
             required
-            >
+          >
             <option value="Animal Protection">Animal Protection</option>
             <option value="Health">Health</option>
             <option value="Development">Development</option>
@@ -142,17 +141,16 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
             <option value="Human Rights">Human Rights</option>
           </select>
         </label>
-        <label>
-          Continent: 
+        <label className="formLabel">
+          Continent:
           <select 
             name="continent" 
             id="continent" 
-            placeholder="Continent" 
             onChange={handleChange}
             required
             value={newAssociation.continent}
-            >
-           <option value="Worldwide">Worldwide</option>
+          >
+            <option value="Worldwide">Worldwide</option>
             <option value="Africa">Africa</option>
             <option value="America">America</option>
             <option value="Asia">Asia</option>
@@ -161,58 +159,55 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
             <option value="Poles">Poles</option> 
           </select>
         </label>
-        <label>
+        <label className="formLabel">Country:
           <input 
             type="text" 
             name="country" 
             id="country" 
-            placeholder="Country" 
             onChange={handleChange}
             value={newAssociation.country}
             required
-            />
+          />
         </label>
-        <label>
+        <label className="formLabel">Address to receive DAI:
           <input 
             type="text" 
             name="address" 
             id="address" 
-            placeholder="Address to receive DAI"
             onChange={handleChange} 
             value={newAssociation.address}
             />
         </label>
-        <label >Upload an image: 
+        <label className="formLabel" >Upload logo: 
           <input
             id="file-uploaded"
+            className="file-input"
             name="file" 
             type="file"
             onChange={handleLogoChange}
             />
         </label>
-        <label>
+        <label className="formLabel">Contact's name:
           <input 
             type="text" 
             name="contactName" 
             id="contactName" 
-            placeholder="Contact's name"
             onChange={handleChange} 
             value={newAssociation.contactName}
             required
             />
         </label>
-        <label>
+        <label className="formLabel">Contact's email:
           <input 
             type="text" 
             name="contactEmail" 
             id="contactEmail" 
-            placeholder="Contact's email"
             onChange={handleChange} 
             value={newAssociation.contactEmail}
             required
             />
         </label>
-        <button type="submit">Add Association</button>
+        <button className="introduction-button irrigateFormButton" type="submit">Submit Association</button>
       </form>
       <div>{status}</div>
     </div>
