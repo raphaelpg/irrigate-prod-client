@@ -8,8 +8,18 @@
 @import './components/filter';
 @import './components/list';
 @import './components/forms';
+@import './components/contact';
+@import './components/about';
 @import './components/footer';
 
 .app-container{
 	height: 100%;
+}
+
+.page-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 50vh;
+	width: 100vh;
 }

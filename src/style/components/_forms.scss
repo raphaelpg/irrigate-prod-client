@@ -3,7 +3,7 @@
   left: 50%;
   top: 50%;
   transform: translateY(-50%) translateX(-50%);
-  z-index: 9;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -11,6 +11,7 @@
   border: 1px solid darkgrey;
   border-radius: 15px;
   background-color: white;
+  transition: 1s;
 }
 
 .irrigateForm {
@@ -18,7 +19,7 @@
   flex-direction: column;
   margin: 0;
   text-align: left;
-  width: 80%;
+  width: 100%;
 }
 
 .irrigateForm input, label {
@@ -54,6 +55,6 @@
   width: 70%;
 }
 
-.irrigateFormButton{
+.irrigateFormButton {
   margin: 30px auto 0 auto;
 }

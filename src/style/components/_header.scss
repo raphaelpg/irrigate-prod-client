@@ -5,8 +5,31 @@ header{
   width: 100%;
   z-index: 9999;
 }
+
 .header-elements-container{
 	margin: 0 auto;
   max-width: $site-width;
   padding: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header-right-container{
+  margin: auto 0;
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.header-link{
+  font-weight: 100;
+}
+
+.header-button{
+  border: none;
+  font-weight: 100;
+}
+.header-button:hover{
+  cursor: pointer;
 }

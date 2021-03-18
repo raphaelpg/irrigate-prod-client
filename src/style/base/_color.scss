@@ -17,6 +17,27 @@ header {
   color: $irrigateFontColor;
 }
 
+.header-link{
+  color: $irrigateFontColor;
+}
+
+.header-button{
+  background-color: transparent;
+  color: $irrigateFontColor;  
+}
+
+.formTitle * {
+  color: $irrigateBackground;
+}
+
+.contact-title {
+  color: $irrigateBackground;
+}
+
+.about-title {
+  color: $irrigateBackground;
+}
+
 footer {
 	background: linear-gradient(45deg, $background-primary, $background-secondary);
   color: $irrigateFontColor;

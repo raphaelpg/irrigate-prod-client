@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-import IrrigateLogo2 from "../images/irrigate-icon.png"
+import IrrigateLogo2 from "../../images/irrigate-icon.png"
 
 interface IBrandProps {
   siteTitle: string
