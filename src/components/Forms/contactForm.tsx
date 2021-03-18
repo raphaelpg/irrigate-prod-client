@@ -36,8 +36,7 @@ const ContactForm: React.FC = () => {
       }
     })
     .then(res => res.json())
-    .then(result => {
-      console.log("res: ", JSON.stringify(result, null, 2));
+    .then(() => {
       clearContactState();
       setStatus('SUCCESS');
     })
@@ -87,7 +86,7 @@ const ContactForm: React.FC = () => {
               required
               />
           </label>
-          {status === "SUCCESS" ? <button className="introduction-button irrigateFormButton">Thanks !</button> : <button className="introduction-button irrigateFormButton" type="submit">Send message</button>}
+          {status === "SUCCESS" ? <p className="form-result">Your message has been sent, we will reply soon</p> : <button className="introduction-button irrigateFormButton" type="submit">Send message</button>}
           {status === "ERROR" && <p>There was an error.</p>}
         </form>
       </div>

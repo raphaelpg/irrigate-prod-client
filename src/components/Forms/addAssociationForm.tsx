@@ -14,6 +14,7 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
   const componentContext: IAppContext | null = useContext(AppContext);
   const refresh = componentContext?.retrieveAssociationsList;
   const [status, setStatus] = useState<string>('');
+  const [responseMsg, setResponseMsg] = useState<string>('');
   const initialAssociation = {
     "name": "", 
     "description": "",
@@ -72,14 +73,20 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
     })
     .then(res => res.json())
     .then(result => {
-      console.log("res: ", JSON.stringify(result, null, 2));
-      clearAssociationState();
-      if (refresh) refresh();
-      setStatus('SUCCESS');
+      if (result.msg === "Cause added successfully") {
+        clearAssociationState();
+        if (refresh) refresh();
+        setStatus('SUCCESS');
+        setResponseMsg(result.msg);
+      } else {
+        setStatus('ERROR');
+        setResponseMsg(result.msg);
+      }
     })
     .catch(err => {
+      setStatus('ERROR');
       console.log(err);
-      setStatus('FAILED');
+      setResponseMsg('Error, please try later');
     })
   }
 
@@ -207,9 +214,9 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
             required
             />
         </label>
-        <button className="introduction-button irrigateFormButton" type="submit">Submit Association</button>
+        {status === "SUCCESS" ? <p className="form-result">{responseMsg}</p> : <button className="introduction-button irrigateFormButton" type="submit">Submit Association</button>}
+        {status === "ERROR" && <p className="form-result-error">{responseMsg}</p>}
       </form>
-      <div>{status}</div>
     </div>
   )
 }

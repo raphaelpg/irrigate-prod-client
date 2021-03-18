@@ -67,7 +67,6 @@ const AddUserForm: React.FC<IAddUserForm> = (props) => {
       setResponseMsg("Passwords are differents")
       setStatus('ERROR');
     }
-
   }
 
   return(
