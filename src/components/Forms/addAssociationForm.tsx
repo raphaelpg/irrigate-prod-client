@@ -63,7 +63,7 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
   const sendAssociation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch(serverUrl + '/api/addcause', {
+    fetch(serverUrl + '/api/add_association', {
       method: 'POST',
       body: JSON.stringify(newAssociation),
       headers: {
@@ -73,7 +73,7 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
     })
     .then(res => res.json())
     .then(result => {
-      if (result.msg === "Cause added successfully") {
+      if (result.msg === "Association added successfully") {
         clearAssociationState();
         if (refresh) refresh();
         setStatus('SUCCESS');

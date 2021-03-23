@@ -42,7 +42,7 @@ const ContactForm: React.FC = () => {
     })
     .catch(err => {
       console.log(err);
-      setStatus('FAILED');
+      setStatus('ERROR');
     })
   }
 
@@ -87,7 +87,7 @@ const ContactForm: React.FC = () => {
               />
           </label>
           {status === "SUCCESS" ? <p className="form-result">Your message has been sent, we will reply soon</p> : <button className="introduction-button irrigateFormButton" type="submit">Send message</button>}
-          {status === "ERROR" && <p>There was an error.</p>}
+          {status === "ERROR" && <p className="form-result-error">There was an error, please try later.</p>}
         </form>
       </div>
     </div>

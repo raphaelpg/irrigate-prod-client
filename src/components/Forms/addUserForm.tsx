@@ -61,10 +61,11 @@ const AddUserForm: React.FC<IAddUserForm> = (props) => {
       })
       .catch(err => {
         console.log(err);
+        setResponseMsg("There was an error, please try later.")
         setStatus('ERROR');
       })
     } else {
-      setResponseMsg("Passwords are differents")
+      setResponseMsg("Passwords are differents.")
       setStatus('ERROR');
     }
   }
