@@ -23,7 +23,8 @@ const Layout: React.FC = ({ children }) => {
   const [ associations, setAssociations ] = useState<IAssociation[]>([]);
 
   const retrieveAssociationsList = () => {
-    fetch(serverUrl + "/api/associations")
+    // fetch(serverUrl + "/api/associations")
+    fetch(serverUrl + "/api/causes")
       .then(response => response.json())
       .then(resultData => {
         // setAssociations(resultData.data)
