@@ -1,16 +1,20 @@
-import React, { useContext } from 'react'
-import { IAppContext, AppContext } from '../../context/AppContext'
-import FadeIn from '../../effects/FadeIn'
-import { IAssociation } from '../../interfaces/Association'
+import React, { useContext, useEffect } from 'react';
+import { IAppContext, AppContext } from '../../context/AppContext';
+import FadeIn from '../../effects/FadeIn';
+import { IAssociation } from '../../interfaces/Association';
 
 interface IListProps {
 	selectedCategory: string,
   selectedLocation: string
-}
+};
 
 const List: React.FC<IListProps> = (props) => {
 	const componentContext: IAppContext | null = useContext(AppContext);
 	const associations: IAssociation[] | undefined = componentContext?.associations;
+
+	useEffect(() => {
+		componentContext?.retrieveAssociationsList();
+	}, []);
 
 	if (associations != undefined) {
 		return (

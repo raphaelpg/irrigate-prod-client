@@ -25,7 +25,6 @@ const AddUserForm: React.FC<IAddUserForm> = (props) => {
 
   const clearUserState = () => {
     setNewUser(initialUser);
-    (document.getElementById("file-uploaded") as HTMLInputElement).value = "";
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {

@@ -35,7 +35,6 @@ const Layout: React.FC = ({ children }) => {
   useEffect(() => {
     setCategories([...dataCategories]);
     setLocations([...dataLocations]);
-    retrieveAssociationsList();
   }, [])
 
   return (
