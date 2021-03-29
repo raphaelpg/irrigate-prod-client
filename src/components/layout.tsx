@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { AppContext } from "../context/AppContext";
+import config from '../config/config';
 import Header from "./Header/header";
 import Footer from "./Footer/footer";
 import { IAssociation } from '../interfaces/Association';
-import { serverUrl, dataCategories, dataLocations } from "../data/data";
+import { dataCategories, dataLocations } from "../data/data";
 
 const Layout: React.FC = ({ children }) => {
   
@@ -23,13 +24,12 @@ const Layout: React.FC = ({ children }) => {
   const [ associations, setAssociations ] = useState<IAssociation[]>([]);
 
   const retrieveAssociationsList = () => {
-    // fetch(serverUrl + "/api/associations")
-    fetch(serverUrl + "/api/causes")
-      .then(response => response.json())
-      .then(resultData => {
-        // setAssociations(resultData.data)
-        setAssociations(resultData)
-    	});
+    fetch(config.server.serverUrl + config.server.getAssociations)
+    .then(response => response.json())
+    .then(resultData => {
+      // setAssociations(resultData.data)
+      setAssociations(resultData)
+    });
   }
 
   useEffect(() => {

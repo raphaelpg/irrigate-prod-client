@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { serverUrl } from '../../data/data'
+import config from '../../config/config';
 import { IAssociation } from '../../interfaces/Association';
 import { IAppContext, AppContext } from '../../context/AppContext'
 
@@ -63,7 +63,7 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
   const sendAssociation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch(serverUrl + '/api/add_association', {
+    fetch(config.server.serverUrl + config.server.addAssociation, {
       method: 'POST',
       body: JSON.stringify(newAssociation),
       headers: {

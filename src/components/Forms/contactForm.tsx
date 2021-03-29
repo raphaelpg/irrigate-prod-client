@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { serverUrl } from '../../data/data'
+import config from '../../config/config';
 import { IContact } from '../../interfaces/Contact';
 
 const ContactForm: React.FC = () => {
@@ -27,7 +27,7 @@ const ContactForm: React.FC = () => {
   const sendMessage = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch(serverUrl + '/message', {
+    fetch(config.server.serverUrl + config.server.sendMessage, {
       method: 'POST',
       body: JSON.stringify(newContact),
       headers: {

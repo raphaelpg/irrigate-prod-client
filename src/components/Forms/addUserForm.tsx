@@ -1,6 +1,6 @@
 // import React, { useState, useContext } from 'react';
 import React, { useState } from 'react';
-import { serverUrl } from '../../data/data'
+import config from '../../config/config';
 import { IUser } from '../../interfaces/User';
 // import { IAppContext, AppContext } from '../../context/AppContext'
 
@@ -39,7 +39,7 @@ const AddUserForm: React.FC<IAddUserForm> = (props) => {
     e.preventDefault();
 
     if (newUser.password === newUser.passwordConfirmation) {
-      fetch(serverUrl + '/signup', {
+      fetch(config.server.serverUrl + config.server.signUp, {
         method: 'POST',
         body: JSON.stringify(newUser),
         headers: {
