@@ -27,8 +27,8 @@ const Layout: React.FC = ({ children }) => {
     fetch(config.server.serverUrl + config.server.getAssociations)
     .then(response => response.json())
     .then(resultData => {
-      // setAssociations(resultData.data)
-      setAssociations(resultData)
+      setAssociations(resultData.data)
+      // setAssociations(resultData)
     });
   }
 
