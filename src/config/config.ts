@@ -1,4 +1,5 @@
 const SERVER = {
+  environment: "prod",
   serverUrl: `https://www.future-space.org`,
   getAssociations: '/api/causes',
   addAssociation: '/api/add_association',
@@ -11,6 +12,7 @@ const SERVER = {
 }
 
 // const SERVER_TEST = {
+//   environment: "test",
 //   serverUrl: `http://localhost:8080`,
 //   getAssociations: '/api/associations',
 //   addAssociation: '/api/association/add',
