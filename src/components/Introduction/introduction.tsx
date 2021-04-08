@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import FadeIn from '../../effects/FadeIn'
-import AddAssociationForm from "../../components/Forms/addAssociationForm"
+import React, { useState } from 'react';
+import FadeIn from '../../effects/FadeIn';
+import AddAssociationForm from "../../components/Forms/addAssociationForm";
 
 const Introduction: React.FC = () => {
 
@@ -8,7 +8,7 @@ const Introduction: React.FC = () => {
 
 	const handleAssociation = (status: boolean) => {
 		setDisplayForm(status);
-	}
+	};
 
 	return (
 		<div className="introduction">
@@ -35,7 +35,7 @@ const Introduction: React.FC = () => {
 				displayForm={displayForm}
 			/>
 		</div>
-	)
-}
+	);
+};
 
-export default Introduction
+export default Introduction;

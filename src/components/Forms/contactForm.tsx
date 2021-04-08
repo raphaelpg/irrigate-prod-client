@@ -8,21 +8,21 @@ const ContactForm: React.FC = () => {
     "name": "", 
     "email": "",
     "message": "",
-  }
+  };
 
   const [newContact, setNewContact] = useState<IContact>(initialFormState);
 
   const clearContactState = () => {
     setNewContact(initialFormState);
-  }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setNewContact(prevNewContact => ({
       ...prevNewContact,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const sendMessage = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,8 +43,8 @@ const ContactForm: React.FC = () => {
     .catch(err => {
       console.log(err);
       setStatus('ERROR');
-    })
-  }
+    });
+  };
 
   return(
     <div className="contact-container">
@@ -91,7 +91,7 @@ const ContactForm: React.FC = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ContactForm;

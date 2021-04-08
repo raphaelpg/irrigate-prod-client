@@ -8,6 +8,6 @@ const SecondPage: React.FC = () => (
     <SEO title="Contact" />
     <ContactForm />
   </Layout>
-)
+);
 
-export default SecondPage
+export default SecondPage;

@@ -1,32 +1,32 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { IAppContext, AppContext } from '../../context/AppContext'
-const images = require.context('../../images', true)
+import React, { useState, useEffect, useContext } from 'react';
+import { IAppContext, AppContext } from '../../context/AppContext';
+const images = require.context('../../images', true);
 
 interface ILocationFilterProps {
 	setLocation: (location: string) => void;
-}
+};
 
 const LocationFilter: React.FC<ILocationFilterProps> = (props) => {
-	const componentContext: IAppContext | null = useContext(AppContext)
-	const locations = componentContext?.locations
-	const [ selectedLocation, setSelectedLocation ] = useState<string>()
+	const componentContext: IAppContext | null = useContext(AppContext);
+	const locations = componentContext?.locations;
+	const [ selectedLocation, setSelectedLocation ] = useState<string>();
 
 	useEffect(() => {
 		setSelectedLocation('Anywhere')
-	}, [])
+	}, []);
 
 	const handleFilterClick = ({ target }: any) => {
 		if (target.title) {
-      setSelectedLocation(target.title)
-      props.setLocation(target.title)
+      setSelectedLocation(target.title);
+      props.setLocation(target.title);
     } else if (target.innerHTML) {
-      setSelectedLocation(target.innerHTML)
-      props.setLocation(target.innerHTML)
+      setSelectedLocation(target.innerHTML);
+      props.setLocation(target.innerHTML);
     } else {
-      setSelectedLocation(target.name)
-      props.setLocation(target.name)
-    }
-	}
+      setSelectedLocation(target.name);
+      props.setLocation(target.name);
+    };
+	};
 
 	return (
 		<div className="category-filter">
@@ -50,7 +50,7 @@ const LocationFilter: React.FC<ILocationFilterProps> = (props) => {
 				)
 			})}
 	  </div>
-	)
-}
+	);
+};
 
-export default LocationFilter
+export default LocationFilter;

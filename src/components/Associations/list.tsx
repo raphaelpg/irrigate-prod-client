@@ -22,14 +22,14 @@ const List: React.FC<IListProps> = (props) => {
 				{associations
 					.filter((association: any) => {
 						if (props.selectedCategory === 'All' && props.selectedLocation !=='Anywhere') {
-							return association.continent === props.selectedLocation
+							return association.continent === props.selectedLocation;
 						} else if (props.selectedCategory !== 'All' && props.selectedLocation ==='Anywhere') {
-							return association.category === props.selectedCategory
+							return association.category === props.selectedCategory;
 						} else if (props.selectedCategory !== 'All' && props.selectedLocation !=='Anywhere') {
-							return (association.category === props.selectedCategory && association.continent === props.selectedLocation)
+							return (association.category === props.selectedCategory && association.continent === props.selectedLocation);
 						} else {
-							return association
-						}
+							return association;
+						};
 					})
 					.map((association, index) => {
 						const {_id, name, description, link, category, continent, country, logo } = association;
@@ -48,18 +48,16 @@ const List: React.FC<IListProps> = (props) => {
 									<p className="cause-number">Total funds raised: 23500 DAI</p>
 									<button className="add-cause-to-your-list-button" name={_id} >Add cause to your donation stream</button>
 							</FadeIn>
-						)
+						);
 					}
 				)}
 			</div>
-		)
+		);
 	} else {
 		return (
 			<div className="causes-list-container"></div>
-		)
-	}
+		);
+	};
+};
 
-}
-
-
-export default List
+export default List;

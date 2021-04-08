@@ -17,7 +17,7 @@ const Layout: React.FC = ({ children }) => {
         }
       }
     }
-  `)
+  `);
 
   const [ categories, setCategories ] = useState<string[]>([]);
   const [ locations, setLocations ] = useState<string[]>([]);
@@ -31,12 +31,12 @@ const Layout: React.FC = ({ children }) => {
       config.server.environment === "prod" ? associationServerResponse = resultData : associationServerResponse = resultData.data 
       setAssociations(associationServerResponse)
     });
-  }
+  };
 
   useEffect(() => {
     setCategories([...dataCategories]);
     setLocations([...dataLocations]);
-  }, [])
+  }, []);
 
   return (
     <AppContext.Provider value={{ categories, locations, associations, retrieveAssociationsList }} >
@@ -48,7 +48,7 @@ const Layout: React.FC = ({ children }) => {
         <Footer siteTitle={data.site.siteMetadata?.title || `Title`} />
       </div>
     </AppContext.Provider>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

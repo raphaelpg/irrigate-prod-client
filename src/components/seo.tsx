@@ -1,13 +1,13 @@
-import React from "react"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import { Helmet } from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 
 interface ISEOProps {
   description?: string,
   lang?: string,
   meta?: Array<{name: string, content: string}>,
   title: string
-}
+};
 
 function SEO({ description='', lang='', meta=[], title }: ISEOProps) {
   const { site } = useStaticQuery(
@@ -22,10 +22,10 @@ function SEO({ description='', lang='', meta=[], title }: ISEOProps) {
         }
       }
     `
-  )
+  );
 
-  const metaDescription: string = description || site.siteMetadata.description
-  const defaultTitle: string = site.siteMetadata?.title
+  const metaDescription: string = description || site.siteMetadata.description;
+  const defaultTitle: string = site.siteMetadata?.title;
 
   return (
     <Helmet
@@ -69,7 +69,7 @@ function SEO({ description='', lang='', meta=[], title }: ISEOProps) {
         },
       ].concat(meta)}
     />
-  )
-}
+  );
+};
 
-export default SEO
+export default SEO;

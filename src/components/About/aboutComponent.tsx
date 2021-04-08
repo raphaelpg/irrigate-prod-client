@@ -19,7 +19,7 @@ const About: React.FC = () => {
         <p className="about-paragraphe">To be completed</p>
       </div> 
     </div>
-  )
-}
+  );
+};
 
 export default About;

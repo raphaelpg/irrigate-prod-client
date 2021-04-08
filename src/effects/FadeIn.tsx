@@ -1,8 +1,8 @@
-import React from 'react'
-import { useInView } from 'react-intersection-observer'
+import React from 'react';
+import { useInView } from 'react-intersection-observer';
 
 const FadeIn = ({ threshold = 0.15, triggerOnce = false, yDistance = 0, xDistance = 0, duration = 1000, ...remainingProps }) => {
-  const [ref, inView] = useInView({ threshold, triggerOnce })
+  const [ref, inView] = useInView({ threshold, triggerOnce });
 
   return (
     <div
@@ -14,7 +14,7 @@ const FadeIn = ({ threshold = 0.15, triggerOnce = false, yDistance = 0, xDistanc
       {...remainingProps}
       ref={ref}
     />
-  )
-}
+  );
+};
 
-export default FadeIn
+export default FadeIn;

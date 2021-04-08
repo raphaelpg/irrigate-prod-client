@@ -5,7 +5,7 @@ interface IFilterLogoProps {
   filename: string,
   alt?: string,
   cat?: string
-}
+};
 
 const FilterLogo: React.FC<IFilterLogoProps> = ({ filename }) => (
   <StaticQuery

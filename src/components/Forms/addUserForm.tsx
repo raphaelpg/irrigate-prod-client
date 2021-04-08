@@ -19,21 +19,21 @@ const AddUserForm: React.FC<IAddUserForm> = (props) => {
     "email": "", 
     "password": "",
     "passwordConfirmation": "",
-  }
+  };
 
   const [newUser, setNewUser] = useState<IUser>(initialUser);
 
   const clearUserState = () => {
     setNewUser(initialUser);
-  }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     setNewUser(prevNewUser => ({
       ...prevNewUser,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const sendUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -60,14 +60,14 @@ const AddUserForm: React.FC<IAddUserForm> = (props) => {
       })
       .catch(err => {
         console.log(err);
-        setResponseMsg("There was an error, please try later.")
+        setResponseMsg("There was an error, please try later.");
         setStatus('ERROR');
-      })
+      });
     } else {
-      setResponseMsg("Passwords are differents.")
+      setResponseMsg("Passwords are differents.");
       setStatus('ERROR');
-    }
-  }
+    };
+  };
 
   return(
     <div className="formContainer" style={props.displaySignUpForm ? {"display":"flex"} : {"display":"none"}}>
@@ -114,7 +114,7 @@ const AddUserForm: React.FC<IAddUserForm> = (props) => {
         {status === "ERROR" && <p className="form-result-error">{responseMsg}</p>}
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default AddUserForm;

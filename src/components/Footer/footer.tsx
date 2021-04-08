@@ -1,9 +1,9 @@
-import React from "react"
-import Brand from "../Brand/brand"
+import React from "react";
+import Brand from "../Brand/brand";
 
 interface IFooterProps {
   siteTitle: string
-}
+};
 
 const Footer: React.FC<IFooterProps> = ({ siteTitle }) => (
   <footer>
@@ -12,6 +12,6 @@ const Footer: React.FC<IFooterProps> = ({ siteTitle }) => (
       <div className="footer-year">&nbsp;- {new Date().getFullYear()}</div>
     </div>
   </footer>
-)
+);
 
-export default Footer
+export default Footer;

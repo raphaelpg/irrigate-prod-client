@@ -1,14 +1,14 @@
 import React, { useState, useContext } from 'react';
 import config from '../../config/config';
 import { IAssociation } from '../../interfaces/Association';
-import { IAppContext, AppContext } from '../../context/AppContext'
+import { IAppContext, AppContext } from '../../context/AppContext';
 
 // import { mockAssociation } from '../../mock/mockAssociation';
 
 interface IAddAssociationForm {
   handleAssociation: (status: boolean) => void;
   displayForm: boolean;
-}
+};
 
 const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
   const componentContext: IAppContext | null = useContext(AppContext);
@@ -26,39 +26,39 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
     "logo": "",
     "contactName": "",
     "contactEmail": "",
-  }
+  };
 
   const [newAssociation, setNewAssociation] = useState<IAssociation>(initialAssociation);
 
   const clearAssociationState = () => {
     setNewAssociation(initialAssociation);
     (document.getElementById("file-uploaded") as HTMLInputElement).value = "";
-  }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     setNewAssociation(prevNewAssociation => ({
       ...prevNewAssociation,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const handleLogoChange = () => {
     let filesSelected = (document.getElementById("file-uploaded") as HTMLInputElement).files;
     if (filesSelected != null) {
-      let fileSize = filesSelected[0].size
+      let fileSize = filesSelected[0].size;
       if (filesSelected.length > 0 && fileSize <= 50000) {
         let fileToLoad = filesSelected[0];
         let fileReader = new FileReader();
         fileReader.onloadend = () => {
           setNewAssociation({...newAssociation, logo: fileReader.result as string})
-        }
-        fileReader.readAsDataURL(fileToLoad)
+        };
+        fileReader.readAsDataURL(fileToLoad);
       } else {
-        alert('File size too big, image must be less than 50kb')
-      }
-    }
-  }
+        alert('File size too big, image must be less than 50kb');
+      };
+    };
+  };
 
   const sendAssociation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -87,8 +87,8 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
       setStatus('ERROR');
       console.log(err);
       setResponseMsg('Error, please try later');
-    })
-  }
+    });
+  };
 
   return(
     <div className="formContainer" style={props.displayForm ? {"display":"flex"} : {"display":"none"}}>
@@ -218,7 +218,7 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
         {status === "ERROR" && <p className="form-result-error">{responseMsg}</p>}
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default AddAssociationForm;

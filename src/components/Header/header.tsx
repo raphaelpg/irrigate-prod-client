@@ -8,11 +8,11 @@ interface IHeaderProps {
 };
 
 const Header: React.FC<IHeaderProps> = ({ siteTitle = '' }) => {
-  const [displaySignUpForm, setDisplaySignUpForm] = useState<boolean>(false) 
+  const [displaySignUpForm, setDisplaySignUpForm] = useState<boolean>(false);
 
   const toggleUserForm = (status: boolean) => {
 		setDisplaySignUpForm(status);
-	}
+	};
 
   return (
   <header>
@@ -30,6 +30,7 @@ const Header: React.FC<IHeaderProps> = ({ siteTitle = '' }) => {
         />
       </div>
   </header>
-)};
+  );
+};
 
 export default Header;

@@ -1,10 +1,10 @@
-import { Link } from "gatsby"
-import React from "react"
-import IrrigateLogo2 from "../../images/irrigate-icon.png"
+import { Link } from "gatsby";
+import React from "react";
+import IrrigateLogo2 from "../../images/irrigate-icon.png";
 
 interface IBrandProps {
   siteTitle: string
-}
+};
 
 const Brand: React.FC<IBrandProps> = ({siteTitle = ''}) => (
   <Link className="brand-container" to="/" >
@@ -13,6 +13,6 @@ const Brand: React.FC<IBrandProps> = ({siteTitle = ''}) => (
       {siteTitle}
     </h1>
   </Link>
-)
+);
 
-export default Brand
+export default Brand;
