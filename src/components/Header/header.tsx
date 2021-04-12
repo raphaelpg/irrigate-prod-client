@@ -15,7 +15,8 @@ const Header: React.FC<IHeaderProps> = ({ siteTitle = '' }) => {
         <Link className="header-link" to="/about">About</Link>
         <Link className="header-link" to="/contact">Contact Us</Link>
         <Link className="header-link" to="/register">Sign up</Link>
-        <button className="header-button">Log in</button>
+        <Link className="header-link" to="/login">Log in</Link>
+        {/* <button className="header-button">Log in</button> */}
       </div>
     </div>
   </header>

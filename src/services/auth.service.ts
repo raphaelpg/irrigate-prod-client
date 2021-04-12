@@ -15,8 +15,18 @@ const register = (newUser: IUser) => {
   });
 };
 
-const login = (newUser: IUser) => {
-  return fetch(API_URL + logInUrl, {
+// fetch('https://jsonplaceholder.typicode.com/posts/1')
+//   .then(function(response) {
+//     // The response is a Response instance.
+//     // You parse the data into a useable format using `.json()`
+//     return response.json();
+//   }).then(function(data) {
+//     // `data` is the parsed version of the JSON returned from the above endpoint.
+//     console.log(data);  // { "userId": 1, "id": 1, "title": "...", "body": "..." }
+//   });
+
+const login = async (newUser: IUser) => {
+  await fetch(API_URL + logInUrl, {
     method: 'POST',
     body: JSON.stringify(newUser),
     headers: {
@@ -25,10 +35,13 @@ const login = (newUser: IUser) => {
     }
   })
   .then((response: any) => {
-    if (response.data.accessToken) {
-      localStorage.setItem("user", JSON.stringify(response.data));
+    return response.json();
+  })
+  .then((data: any) => {
+    if (data.token) {
+      localStorage.setItem("user", JSON.stringify(data));
     }
-    return response.data;
+    return data;
   })
 };
 
