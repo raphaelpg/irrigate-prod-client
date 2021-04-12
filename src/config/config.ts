@@ -7,6 +7,7 @@ const SERVER = {
   updateAssociation: '/api/association/update',
   getUser: '/api/user',
   signUp: '/signup',
+	logIn: '/api/user/login',
   deleteUser: '/api/user/delete',
   sendMessage: '/message'
 };
@@ -20,6 +21,7 @@ const SERVER = {
 //   updateAssociation: '/api/association/update',
 //   getUser: '/api/user',
 //   signUp: '/api/user/add',
+// 	logIn: '/api/user/login',
 //   deleteUser: '/api/user/delete',
 //   sendMessage: '/api/message/add'
 // };
@@ -58,8 +60,6 @@ const FILTERS = [
 const config = {
   server: SERVER,
 	filters: FILTERS,
-  categories: CATEGORIES,
-  locations: LOCATIONS,
 };
 
 export default config;

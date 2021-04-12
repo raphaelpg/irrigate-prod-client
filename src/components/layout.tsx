@@ -36,8 +36,8 @@ const Layout: React.FC = ({ children }) => {
 
   useEffect(() => {
     setFilters([...config.filters])
-    setCategories([...config.categories]);
-    setLocations([...config.locations]);
+    setCategories([...config.filters[0].keys]);
+    setLocations([...config.filters[1].keys]);
   }, []);
 
   return (

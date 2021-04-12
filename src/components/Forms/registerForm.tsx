@@ -1,18 +1,9 @@
-// import React, { useState, useContext } from 'react';
 import React, { useState } from 'react';
 import config from '../../config/config';
 import { IUser } from '../../interfaces/User';
-// import { IAppContext, AppContext } from '../../context/AppContext'
 
-// import { mockUser } from '../../mock/mockUser';
-
-interface IAddUserForm {
-  toggleUserForm: (status: boolean) => void;
-  displaySignUpForm: boolean;
-}
-
-const AddUserForm: React.FC<IAddUserForm> = (props) => {
-  // const componentContext: IAppContext | null = useContext(AppContext);
+const RegisterForm: React.FC = () => {
+  const passwordMinLenght = 5;
   const [status, setStatus] = useState<string>('');
   const [responseMsg, setResponseMsg] = useState<string>('');
   const initialUser = {
@@ -38,42 +29,46 @@ const AddUserForm: React.FC<IAddUserForm> = (props) => {
   const sendUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (newUser.password === newUser.passwordConfirmation) {
-      fetch(config.server.serverUrl + config.server.signUp, {
-        method: 'POST',
-        body: JSON.stringify(newUser),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      })
-      .then(res => res.json())
-      .then(result => {
-        if (result.msg === "User created") {
-          clearUserState();
-          setResponseMsg(result.msg)
-          setStatus('SUCCESS');
-        } else {
-          setResponseMsg(result.msg)
+    if (newUser.password.length >= passwordMinLenght) {
+      if (newUser.password === newUser.passwordConfirmation) {
+        fetch(config.server.serverUrl + config.server.signUp, {
+          method: 'POST',
+          body: JSON.stringify(newUser),
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          }
+        })
+        .then(res => res.json())
+        .then(result => {
+          if (result.msg === "User created") {
+            clearUserState();
+            setResponseMsg(result.msg)
+            setStatus('SUCCESS');
+          } else {
+            setResponseMsg(result.msg)
+            setStatus('ERROR');
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          setResponseMsg("There was an error, please try later.");
           setStatus('ERROR');
-        }
-      })
-      .catch(err => {
-        console.log(err);
-        setResponseMsg("There was an error, please try later.");
+        });
+      } else {
+        setResponseMsg("Passwords are differents.");
         setStatus('ERROR');
-      });
+      };
     } else {
-      setResponseMsg("Passwords are differents.");
+      setResponseMsg(`Password's length must be greater than ${passwordMinLenght} characters.`);
       setStatus('ERROR');
     };
   };
 
   return(
-    <div className="formContainer" style={props.displaySignUpForm ? {"display":"flex"} : {"display":"none"}}>
+    <div className="formContainer" style={{"display":"flex"}}>
       <div className="formTitle">
         <h2>Sign up</h2>
-        <button className="closeButton" onClick={() => props.toggleUserForm(false)}>x</button>
       </div> 
       <form
         className="irrigateForm"
@@ -117,4 +112,4 @@ const AddUserForm: React.FC<IAddUserForm> = (props) => {
   );
 };
 
-export default AddUserForm;
+export default RegisterForm;
