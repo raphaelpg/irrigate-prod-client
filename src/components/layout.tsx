@@ -5,7 +5,7 @@ import config from '../config/config';
 import Header from "./Header/header";
 import Footer from "./Footer/footer";
 import { IAssociation } from '../interfaces/Association';
-// import { dataCategories, dataLocations } from "../data/data";
+import { IFilter } from '../interfaces/Filter';
 
 const Layout: React.FC = ({ children }) => {
   
@@ -19,6 +19,7 @@ const Layout: React.FC = ({ children }) => {
     }
   `);
 
+  const [ filters, setFilters ] = useState<IFilter[]>([]);
   const [ categories, setCategories ] = useState<string[]>([]);
   const [ locations, setLocations ] = useState<string[]>([]);
   const [ associations, setAssociations ] = useState<IAssociation[]>([]);
@@ -34,14 +35,13 @@ const Layout: React.FC = ({ children }) => {
   };
 
   useEffect(() => {
-    // setCategories([...dataCategories]);
+    setFilters([...config.filters])
     setCategories([...config.categories]);
-    // setLocations([...dataLocations]);
     setLocations([...config.locations]);
   }, []);
 
   return (
-    <AppContext.Provider value={{ categories, locations, associations, retrieveAssociationsList }} >
+    <AppContext.Provider value={{ filters, categories, locations, associations, retrieveAssociationsList }} >
       <div className="app-container">
         <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
         <div className="main-container">

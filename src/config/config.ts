@@ -44,8 +44,20 @@ const LOCATIONS = [
 	'Poles'
 ];
 
+const FILTERS = [
+	{
+		name: "Categories",
+		keys: CATEGORIES
+	},
+	{
+		name: "Locations",
+		keys: LOCATIONS
+	}
+]
+
 const config = {
   server: SERVER,
+	filters: FILTERS,
   categories: CATEGORIES,
   locations: LOCATIONS,
 };
