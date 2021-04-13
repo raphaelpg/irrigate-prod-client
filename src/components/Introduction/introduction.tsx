@@ -23,7 +23,7 @@ const Introduction: React.FC = () => {
 					</button>
 				</div>
 				<div className="introduction-right" >
-					<h2 className="introduction-right-title">Donors: give directly or subscribe to a monthly donations</h2>
+					<h2 className="introduction-right-title">Donors: give directly or subscribe to monthly donations</h2>
 					<div className="introduction-right-button-container">
 						<button className="introduction-button" >One time donation</button>
 						<button className="introduction-button" >Monthly subscription</button>

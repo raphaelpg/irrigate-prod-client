@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import config from '../../config/config';
+import AuthService from '../../services/auth.service';
+import { navigate } from 'gatsby';
 import { IUser } from '../../interfaces/User';
 
 const RegisterForm: React.FC = () => {
   const passwordMinLenght = 5;
   const [status, setStatus] = useState<string>('');
   const [responseMsg, setResponseMsg] = useState<string>('');
+  const [displayInputs, setDisplayInputs] = useState<boolean>(true);
   const initialUser = {
     "email": "", 
     "password": "",
@@ -28,25 +30,29 @@ const RegisterForm: React.FC = () => {
 
   const sendUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (newUser.password.length >= passwordMinLenght) {
       if (newUser.password === newUser.passwordConfirmation) {
-        fetch(config.server.serverUrl + config.server.signUp, {
-          method: 'POST',
-          body: JSON.stringify(newUser),
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          }
-        })
+        AuthService.register(newUser)
         .then(res => res.json())
         .then(result => {
           if (result.msg === "User created") {
             clearUserState();
-            setResponseMsg(result.msg)
             setStatus('SUCCESS');
+            setResponseMsg(result.msg);
+            setDisplayInputs(false);
+            AuthService.login(newUser)
+            .then(() => {
+              if (localStorage.getItem("user")) {
+                let localData = JSON.parse(localStorage.getItem("user")!);
+                if (localData.msg === "User authorized") {
+                  setTimeout(() => {
+                    navigate('/');
+                  }, 1000)
+                }
+              }
+            })
           } else {
-            setResponseMsg(result.msg)
+            setResponseMsg(result.msg);
             setStatus('ERROR');
           }
         })
@@ -75,36 +81,42 @@ const RegisterForm: React.FC = () => {
         method="post"
         onSubmit={sendUser}
       >
-        <label className="formLabel">Email:
-          <input 
-            type="text" 
-            name="email" 
-            id="email" 
-            onChange={handleChange}
-            value={newUser.email}
-            required
-          />
-        </label>
-        <label className="formLabel">Password:
-          <input 
-            type="password" 
-            name="password" 
-            id="password" 
-            onChange={handleChange}
-            value={newUser.password}
-            required
-          />
-        </label>
-        <label className="formLabel">Password confirmation:
-          <input 
-            type="password" 
-            name="passwordConfirmation" 
-            id="passwordConfirmation" 
-            onChange={handleChange} 
-            value={newUser.passwordConfirmation}
-            required
-          />
-        </label>
+        {displayInputs ? (
+          <div>
+            <label className="formLabel">Email:
+              <input 
+                type="text" 
+                name="email" 
+                id="email" 
+                onChange={handleChange}
+                value={newUser.email}
+                required
+              />
+            </label>
+            <label className="formLabel">Password:
+              <input 
+                type="password" 
+                name="password" 
+                id="password" 
+                onChange={handleChange}
+                value={newUser.password}
+                required
+              />
+            </label>
+            <label className="formLabel">Password confirmation:
+              <input 
+                type="password" 
+                name="passwordConfirmation" 
+                id="passwordConfirmation" 
+                onChange={handleChange} 
+                value={newUser.passwordConfirmation}
+                required
+              />
+            </label>
+          </div>
+        ) : (
+          <></>
+        )}
         {status === "SUCCESS" ? <p className="form-result">{responseMsg}</p> : <button className="introduction-button irrigateFormButton" type="submit">Submit</button>}
         {status === "ERROR" && <p className="form-result-error">{responseMsg}</p>}
       </form>

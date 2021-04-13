@@ -32,7 +32,7 @@ const List: React.FC<IListProps> = (props) => {
 						};
 					})
 					.map((association, index) => {
-						const {_id, name, description, link, category, continent, country, logo } = association;
+						const {_id, name, description, link, category, continent, country, logo, address } = association;
 						return(
 							<FadeIn className="cause-display" duration={1500} triggerOnce={true} key={index}>
 									<div className="cause-logo-container">
@@ -46,6 +46,7 @@ const List: React.FC<IListProps> = (props) => {
 									<p className="cause-number">Monthly donors: 2000 persons</p>
 									<p className="cause-number">Monthly donations: 1500 DAI</p>
 									<p className="cause-number">Total funds raised: 23500 DAI</p>
+									<p className="cause-number">Eth address: {address}</p>
 									<button className="add-cause-to-your-list-button" name={_id} >Add cause to your donation stream</button>
 							</FadeIn>
 						);
