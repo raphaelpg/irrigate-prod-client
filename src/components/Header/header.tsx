@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import Brand from "../Brand/brand";
 import authServices from '../../services/auth.service';
 
@@ -13,6 +13,9 @@ const Header: React.FC<IHeaderProps> = ({ siteTitle = '' }) => {
   const logout = () => {
     authServices.logout();
     setCurrentUser(undefined);
+    setTimeout(() => {
+      navigate('/')
+    }, 1000)
   };
 
   useEffect(() => {

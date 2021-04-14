@@ -56,6 +56,15 @@ header {
   color: $irrigateErrorColor;
 }
 
+.delete-label {
+  color: $irrigateBackground;
+}
+
+.deleteFormButton {
+  background-color: $irrigateErrorColor;
+  color: $irrigateFontColor;
+}
+
 footer {
 	background: linear-gradient(45deg, $background-primary, $background-secondary);
   color: $irrigateFontColor;

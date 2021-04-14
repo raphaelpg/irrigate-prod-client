@@ -43,9 +43,22 @@ const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user")!);
 };
 
+const remove = async (user: IUser) => {
+  return fetch(config.server.serverUrl + config.server.deleteUser, {
+    method: 'DELETE',
+    body: JSON.stringify({ email: user['email'] }),
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + user['token']
+    }
+  })
+}
+
 export default {
   register,
   login,
   logout,
   getCurrentUser,
+  remove
 };
