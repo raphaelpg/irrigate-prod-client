@@ -5,7 +5,7 @@ import LoginForm from "../components/Forms/loginForm";
 
 const LoginPage: React.FC = () => (
   <Layout>
-    <SEO title="Contact" />
+    <SEO title="Login" />
     <LoginForm />
   </Layout>
 );

@@ -31,7 +31,7 @@ const Header: React.FC<IHeaderProps> = ({ siteTitle = '' }) => {
         <Link className="header-link" to="/contact">Contact Us</Link>
         { currentUser ? (
           <div className="header-logger-container">
-            <Link className="header-link" to="/register">User</Link>
+            <Link className="header-link" to="/account">Account</Link>
             <button className="header-button" onClick={logout}>Log out</button>
           </div>
         ) : (

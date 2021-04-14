@@ -5,7 +5,7 @@ import RegisterForm from "../components/Forms/registerForm";
 
 const RegisterPage: React.FC = () => (
   <Layout>
-    <SEO title="Contact" />
+    <SEO title="Register" />
     <RegisterForm />
   </Layout>
 );
