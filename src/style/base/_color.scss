@@ -56,8 +56,14 @@ header {
   color: $irrigateErrorColor;
 }
 
+
 .delete-label {
   color: $irrigateBackground;
+}
+
+.cancel-button {
+  background-color: $irrigateBackground;
+  color: $irrigateFontColor;
 }
 
 .deleteFormButton {
