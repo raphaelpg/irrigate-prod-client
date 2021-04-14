@@ -1,15 +1,15 @@
 const SERVER = {
   environment: "prod",
   serverUrl: `https://www.future-space.org`,
-  getAssociations: '/api/causes',
-  addAssociation: '/api/add_association',
+  getAssociations: '/api/associations',
+  addAssociation: '/api/association/add',
   deleteAssociation: '/api/association/delete',
   updateAssociation: '/api/association/update',
   getUser: '/api/user',
-  signUp: '/signup',
+  signUp: '/api/user/add',
 	logIn: '/api/user/login',
   deleteUser: '/api/user/delete',
-  sendMessage: '/message'
+  sendMessage: '/api/message/add'
 };
 
 // const SERVER = {
