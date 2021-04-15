@@ -25,9 +25,7 @@ const FilterLogo: React.FC<IFilterLogoProps> = ({ filename }) => (
 
     render={(data) => {
       const image = data.images.edges.find((n: any) => n.node.relativePath.includes(filename));
-
       if (!image) return null;
-
       return <img className="cause-filter-logo" alt={filename} src={image.node.publicURL} name={filename} />;
     }}
     

@@ -6,6 +6,7 @@ import Header from "./Header/header";
 import Footer from "./Footer/footer";
 import { IAssociation } from '../interfaces/Association';
 import { IFilter } from '../interfaces/Filter';
+import associationService from '../services/associations.service';
 
 const Layout: React.FC = ({ children }) => {
   
@@ -25,8 +26,7 @@ const Layout: React.FC = ({ children }) => {
   const [ associations, setAssociations ] = useState<IAssociation[]>([]);
 
   const retrieveAssociationsList = () => {
-    fetch(config.server.serverUrl + config.server.getAssociations)
-    .then(response => response.json())
+    associationService.getAssociationsList()
     .then(resultData => {
       setAssociations(resultData.data)
     });

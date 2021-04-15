@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import config from '../../config/config';
-import { IContact } from '../../interfaces/Contact';
+// import config from '../../config/config';
+import { IMessage } from '../../interfaces/Message';
+import messageService from '../../services/message.service';
 
 const ContactForm: React.FC = () => {
   const [status, setStatus] = useState<string>('');
@@ -9,33 +10,23 @@ const ContactForm: React.FC = () => {
     "email": "",
     "message": "",
   };
-
-  const [newContact, setNewContact] = useState<IContact>(initialFormState);
+  const [newMessage, setNewMessage] = useState<IMessage>(initialFormState);
 
   const clearContactState = () => {
-    setNewContact(initialFormState);
+    setNewMessage(initialFormState);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setNewContact(prevNewContact => ({
-      ...prevNewContact,
+    setNewMessage(prevNewMessage => ({
+      ...prevNewMessage,
       [name]: value,
     }));
   };
 
   const sendMessage = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    fetch(config.server.serverUrl + config.server.sendMessage, {
-      method: 'POST',
-      body: JSON.stringify(newContact),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-    .then(res => res.json())
+    messageService.sendMessage(newMessage)
     .then(() => {
       clearContactState();
       setStatus('SUCCESS');
@@ -63,7 +54,7 @@ const ContactForm: React.FC = () => {
               name="name" 
               id="name" 
               onChange={handleChange}
-              value={newContact.name}
+              value={newMessage.name}
               required
             />
           </label>
@@ -73,7 +64,7 @@ const ContactForm: React.FC = () => {
               name="email" 
               id="email" 
               onChange={handleChange}
-              value={newContact.email}
+              value={newMessage.email}
               required
             />
           </label>
@@ -82,7 +73,7 @@ const ContactForm: React.FC = () => {
               name="message" 
               id="message" 
               onChange={handleChange} 
-              value={newContact.message}
+              value={newMessage.message}
               required
               />
           </label>

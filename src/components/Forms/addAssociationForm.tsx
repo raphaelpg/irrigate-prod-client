@@ -1,9 +1,8 @@
 import React, { useState, useContext } from 'react';
-import config from '../../config/config';
+// import config from '../../config/config';
+import associationService from '../../services/associations.service';
 import { IAssociation } from '../../interfaces/Association';
 import { IAppContext, AppContext } from '../../context/AppContext';
-
-// import { mockAssociation } from '../../mock/mockAssociation';
 
 interface IAddAssociationForm {
   handleAssociation: (status: boolean) => void;
@@ -12,7 +11,7 @@ interface IAddAssociationForm {
 
 const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
   const componentContext: IAppContext | null = useContext(AppContext);
-  const refresh = componentContext?.retrieveAssociationsList;
+  const retrieveAssociationsList = componentContext?.retrieveAssociationsList;
   const [status, setStatus] = useState<string>('');
   const [responseMsg, setResponseMsg] = useState<string>('');
   const initialAssociation = {
@@ -62,20 +61,11 @@ const AddAssociationForm: React.FC<IAddAssociationForm> = (props) => {
 
   const sendAssociation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    fetch(config.server.serverUrl + config.server.addAssociation, {
-      method: 'POST',
-      body: JSON.stringify(newAssociation),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-    .then(res => res.json())
+    associationService.addAssociation(newAssociation)
     .then(result => {
       if (result.msg === "Association added successfully") {
         clearAssociationState();
-        if (refresh) refresh();
+        if (retrieveAssociationsList) retrieveAssociationsList();
         setStatus('SUCCESS');
         setResponseMsg(result.msg);
       } else {
