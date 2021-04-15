@@ -34,7 +34,7 @@ const List: React.FC<IListProps> = (props) => {
 					.map((association, index) => {
 						const {_id, name, description, link, category, continent, country, logo, address } = association;
 						return(
-							<FadeIn className="cause-display" duration={1500} triggerOnce={true} key={index}>
+							<FadeIn className="cause-display" duration={1000} triggerOnce={true} key={index}>
 									<div className="cause-logo-container">
 										<img className="cause-logo" src={logo} alt={name} />
 									</div>
@@ -56,7 +56,7 @@ const List: React.FC<IListProps> = (props) => {
 		);
 	} else {
 		return (
-			<div className="causes-list-container"></div>
+			<div className="causes-list-container">Loading...</div>
 		);
 	};
 };
