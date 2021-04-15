@@ -27,6 +27,7 @@ const Header: React.FC<IHeaderProps> = ({ siteTitle = '' }) => {
   
   return (
   <header>
+    <p className="demo-warning">DEMO VERSION: THIS SITE IS FOR DEMO PURPOSES, THE ASSOCIATIONS IN THE LIST BELOW ARE JUST EXAMPLES AND THEIR ADDRESSES ARE FAKE</p>
     <div className="header-elements-container">
       <Brand siteTitle={siteTitle} />
       <div className="header-right-container">

@@ -28,8 +28,6 @@ const Layout: React.FC = ({ children }) => {
     fetch(config.server.serverUrl + config.server.getAssociations)
     .then(response => response.json())
     .then(resultData => {
-      // let associationServerResponse;
-      // config.server.environment === "prod" ? associationServerResponse = resultData : associationServerResponse = resultData.data 
       setAssociations(resultData.data)
     });
   };
