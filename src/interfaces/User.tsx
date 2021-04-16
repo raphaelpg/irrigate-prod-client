@@ -4,4 +4,5 @@ export interface IUser {
 	password: string,
 	passwordConfirmation?: string,
 	token?: string,
+	subscribedAssociations?: string[]
 };
