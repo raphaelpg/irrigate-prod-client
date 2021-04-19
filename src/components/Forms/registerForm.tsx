@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AuthService from '../../services/auth.service';
+import UserService from '../../services/user.service';
 import { navigate } from 'gatsby';
 import { IUser } from '../../interfaces/User';
 
@@ -32,7 +32,7 @@ const RegisterForm: React.FC = () => {
     e.preventDefault();
     if (newUser.password.length >= passwordMinLenght) {
       if (newUser.password === newUser.passwordConfirmation) {
-        AuthService.register(newUser)
+        UserService.register(newUser)
         .then(res => res.json())
         .then(result => {
           if (result.msg === "User created") {
@@ -40,7 +40,7 @@ const RegisterForm: React.FC = () => {
             setStatus('SUCCESS');
             setResponseMsg(result.msg);
             setDisplayInputs(false);
-            AuthService.login(newUser)
+            UserService.login(newUser)
             .then(() => {
               if (localStorage.getItem("user")) {
                 let localData = JSON.parse(localStorage.getItem("user")!);

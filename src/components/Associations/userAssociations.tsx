@@ -12,45 +12,43 @@ const UserAssociations: React.FC = () => {
     if (localStorage.getItem('user')) {
       const user: IUser = JSON.parse(localStorage.getItem('user')!);
       return user.subscribedAssociations;
-    }
-  }
+    };
+  };
 
   useEffect(() => {
     const asso = getUserAssociations();
     if (asso) {
       setUserAssociations(asso)
-    }
+    };
     componentContext?.retrieveAssociationsList();
-  }, [])
+  }, []);
 
-  console.log("associations:", associations)
-  console.log("userAssociations:", userAssociations)
   return (
     <div className="user-causes-list-container">
       <h2 className="delete-label">Associations you are giving to:</h2>
       {associations.filter(asso => {
           if (userAssociations.indexOf(asso._id!) !== -1) return asso
         }).map((association: any) => {
+          const {_id, name, description, link, category, continent, country, logo, address } = association;
           return(
-            <div className="user-cause-display" key={association._id}>
+            <div className="user-cause-display" key={_id}>
               <div className="cause-logo-container">
-                <img className="cause-logo" src={association.logo} alt={association.name} />
+                <img className="cause-logo" src={logo} alt={name} />
               </div>
               <div>
-              <h3 className="user-cause-text">{association.name}</h3>
-              <p className="user-cause-text">{association.category}</p>
-              <p className="user-cause-text">Activity's location: {association.continent}, {association.country}</p>
-              <a className="user-cause-text" href={association.link} target="_blank" rel="noopener noreferrer">{association.link}</a>
-              <p className="cause-number">Eth address: {association.address}</p>
-
+                <h3 className="user-cause-text">{name}</h3>
+                <p className="user-cause-text">{category}</p>
+                <p className="user-cause-text">Activity's location: {continent}, {country}</p>
+                <a className="user-cause-text" href={link} target="_blank" rel="noopener noreferrer">{link}</a>
+                <p className="cause-number">Eth address: {address}</p>
               </div>
-              <p className="user-cause-text">{association.description}</p>
+              <p className="user-cause-text">{description}</p>
             </div>
-          )
+          );
         })
       }
     </div>
-  )
-}
+  );
+};
 
 export default UserAssociations;

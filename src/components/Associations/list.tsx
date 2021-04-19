@@ -1,7 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { IAppContext, AppContext } from '../../context/AppContext';
 import FadeIn from '../../effects/FadeIn';
 import { IAssociation } from '../../interfaces/Association';
+import { IUser } from '../../interfaces/User';
+import UserServices from '../../services/user.service';
 
 interface IListProps {
 	selectedCategory: string,
@@ -11,9 +13,26 @@ interface IListProps {
 const List: React.FC<IListProps> = (props) => {
 	const componentContext: IAppContext | null = useContext(AppContext);
 	const associations: IAssociation[] | undefined = componentContext?.associations;
+	const [user, setUser] = useState<IUser>()
 
+	const addAssociation = (associationId: string) => {
+		if (user) {
+			const newUser = user;
+			newUser.subscribedAssociations?.push(associationId);
+			setUser(newUser)
+			UserServices.update(newUser)
+			localStorage.setItem("user", JSON.stringify(newUser));
+		} else {
+			return;
+		}
+	}
+	
 	useEffect(() => {
 		componentContext?.retrieveAssociationsList();
+		const user = UserServices.getCurrentUser();
+		if (user) {
+			setUser(user)
+    };
 	}, []);
 
 	if (associations != undefined) {
@@ -47,7 +66,7 @@ const List: React.FC<IListProps> = (props) => {
 									<p className="cause-number">Monthly donations: 1500 DAI</p>
 									<p className="cause-number">Total funds raised: 23500 DAI</p>
 									<p className="cause-number">Eth address: {address}</p>
-									<button className="add-cause-to-your-list-button" name={_id} >Add cause to your donation stream</button>
+									<button className="add-cause-to-your-list-button" name={_id} onClick={() => addAssociation(_id!)} >Add association to your donation stream</button>
 							</FadeIn>
 						);
 					}

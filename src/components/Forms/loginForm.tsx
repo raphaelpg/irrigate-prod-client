@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { navigate } from 'gatsby';
-import AuthService from '../../services/auth.service';
+import UserService from '../../services/user.service';
 import { IUser } from '../../interfaces/User';
 
 const LoginForm: React.FC = () => {
@@ -27,7 +27,7 @@ const LoginForm: React.FC = () => {
 
   const sendUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    AuthService.login(newUser)
+    UserService.login(newUser)
     .then(() => {
       if (localStorage.getItem("user")) {
         let localData = JSON.parse(localStorage.getItem("user")!);

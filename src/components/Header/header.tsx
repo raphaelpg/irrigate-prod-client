@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, navigate } from "gatsby";
 import Brand from "../Brand/brand";
-import authServices from '../../services/auth.service';
+import UserServices from '../../services/user.service';
 
 interface IHeaderProps {
   siteTitle: string
@@ -11,7 +11,7 @@ const Header: React.FC<IHeaderProps> = ({ siteTitle = '' }) => {
   const [currentUser, setCurrentUser] = useState<any>(undefined);
   
   const logout = () => {
-    authServices.logout();
+    UserServices.logout();
     setCurrentUser(undefined);
     setTimeout(() => {
       navigate('/')
@@ -19,7 +19,7 @@ const Header: React.FC<IHeaderProps> = ({ siteTitle = '' }) => {
   };
 
   useEffect(() => {
-    const user = authServices.getCurrentUser();
+    const user = UserServices.getCurrentUser();
     if (user) {
       setCurrentUser(user);
     };

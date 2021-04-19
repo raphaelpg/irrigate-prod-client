@@ -32,7 +32,7 @@ const login = async (newUser: IUser) => {
       localStorage.setItem("user", JSON.stringify(data));
     }
     return data;
-  })
+  });
 };
 
 const logout = () => {
@@ -52,13 +52,26 @@ const remove = async (user: IUser) => {
       'Accept': 'application/json',
       'Authorization': 'Bearer ' + user['token']
     }
-  })
-}
+  });
+};
+
+const update = async (user: IUser) => {
+  return fetch(config.server.serverUrl + config.server.updateUser, {
+    method: 'PATCH',
+    body: JSON.stringify({ email: user['email'], subscribedAssociations: user['subscribedAssociations'] }),
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + user['token']
+    }
+  });
+};
 
 export default {
   register,
   login,
   logout,
   getCurrentUser,
-  remove
+  remove,
+  update
 };

@@ -7,7 +7,8 @@ const SERVER = {
   updateAssociation: '/api/association/update',
   getUser: '/api/user',
   signUp: '/api/user/add',
-	logIn: '/api/user/login',
+	 logIn: '/api/user/login',
+  updateUser: '/api/user/updateSubscriptions',
   deleteUser: '/api/user/delete',
   sendMessage: '/api/message/add'
 };
@@ -23,6 +24,7 @@ const SERVER = {
 //   signUp: '/api/user/add',
 // 	logIn: '/api/user/login',
 //   deleteUser: '/api/user/delete',
+// 	updateUser: '/api/user/updateSubscriptions',
 //   sendMessage: '/api/message/add'
 // };
 

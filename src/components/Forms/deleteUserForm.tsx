@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { navigate } from 'gatsby';
-import AuthService from '../../services/auth.service';
+import UserService from '../../services/user.service';
 import { IUser } from '../../interfaces/User';
 
 const DeleteUserForm: React.FC = () => {
@@ -14,13 +14,13 @@ const DeleteUserForm: React.FC = () => {
   const deleteUser = () => {
     if (localStorage.getItem('user')) {
       const user: IUser = JSON.parse(localStorage.getItem('user')!);
-      AuthService.remove(user)
+      UserService.remove(user)
       .then(res => res.json())
       .then((result) => {
         if (result.msg === 'User deleted') {
           toggleConfirmation();
           setStatus('SUCCESS');
-          AuthService.logout();
+          UserService.logout();
           setTimeout(() => {
             navigate('/');
           }, 1000)
