@@ -22,6 +22,17 @@
   box-shadow: 10px 10px 10px -10px rgba(0, 0, 0, 0.5);
 }
 
+.user-cause-logo-container {
+  max-height: 180px;
+  height: 180px;
+  max-width: 220px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: 0 10px 0 0;
+}
+
 .user-cause-text {
   font-family: "Roboto",sans-serif;
   line-height: 20px;
@@ -33,4 +44,28 @@
 .user-cause-right-container {
   display: flex;
   flex-direction: column;
+  margin: 0 0 0 10px;
+}
+
+.user-cause-delete-button {
+  position: relative;
+  margin: auto;
+  padding: 0 0 0 0;
+  width: 130px;
+  height: 30px;
+  font-weight: bold;
+  font-size: medium;
+  border: none;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  outline: none;
+  transition: all 0.5s;
+  box-shadow: $standardShadow;
+}
+.user-cause-delete-button:hover {
+  background-color: $irrigateFontColor;
+  color: $irrigateErrorColor;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

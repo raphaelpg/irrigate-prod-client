@@ -71,6 +71,11 @@ header {
   color: $irrigateFontColor;
 }
 
+.user-cause-delete-button {
+  background-color: $irrigateErrorColor;
+  color: $irrigateFontColor;
+}
+
 footer {
 	background: linear-gradient(45deg, $background-primary, $background-secondary);
   color: $irrigateFontColor;

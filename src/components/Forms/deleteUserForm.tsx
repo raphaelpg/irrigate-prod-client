@@ -44,7 +44,7 @@ const DeleteUserForm: React.FC = () => {
               <p style={{margin: "auto"}}>Please confirm deletion of your account:</p>
               <div className="confirmation-button-container">
                 <button className="cancel-button" onClick={toggleConfirmation}>Cancel</button>
-                <button className="deleteFormButton" onClick={deleteUser}>Confirm</button>
+                <button className="deleteFormButton deleteFormButtonConfirm" onClick={deleteUser}>Confirm</button>
               </div>
             </div>
           </div>

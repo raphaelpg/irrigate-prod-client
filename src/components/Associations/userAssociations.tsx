@@ -48,7 +48,7 @@ const UserAssociations: React.FC = () => {
           const {_id, name, description, link, category, continent, country, logo, address } = association;
           return(
             <div className="user-cause-display" key={_id}>
-              <div className="cause-logo-container">
+              <div className="user-cause-logo-container">
                 <img className="cause-logo" src={logo} alt={name} />
               </div>
               <div>
@@ -60,7 +60,7 @@ const UserAssociations: React.FC = () => {
               </div>
               <div className="user-cause-right-container">
                 <p className="user-cause-text">{description}</p>
-                <button className="deleteFormButton" onClick={() => removeUserAssociation(_id)}>Remove</button>
+                <button className="user-cause-delete-button" onClick={() => removeUserAssociation(_id)}>Remove</button>
               </div>
             </div>
           );
