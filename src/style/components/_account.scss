@@ -1,6 +1,6 @@
 .user-causes-list-container {
   width: 100%;
-  margin: 20px auto;
+  min-width: 1110px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -28,4 +28,9 @@
   font-size: 16px;
   letter-spacing: 0px;
   margin: 0;
+}
+
+.user-cause-right-container {
+  display: flex;
+  flex-direction: column;
 }

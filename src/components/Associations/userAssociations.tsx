@@ -2,24 +2,40 @@ import React, { useEffect, useState, useContext } from 'react';
 import { IAppContext, AppContext } from '../../context/AppContext';
 import { IUser } from '../../interfaces/User';
 import { IAssociation } from '../../interfaces/Association';
+import UserServices from '../../services/user.service';
 
 const UserAssociations: React.FC = () => {
   const componentContext: IAppContext | null = useContext(AppContext);
   const associations: IAssociation[] | undefined = componentContext?.associations;
-  const [userAssociations, setUserAssociations] = useState<string[]>([])
+  const [currentUser, setCurrentUser] = useState<IUser>();
 
-  const getUserAssociations: () => string[] | undefined = () => {
-    if (localStorage.getItem('user')) {
-      const user: IUser = JSON.parse(localStorage.getItem('user')!);
-      return user.subscribedAssociations;
-    };
-  };
+  const removeItem: <T>(arr: Array<T>, value: T) => Array<T> = (arr ,val) => { 
+    const index = arr.indexOf(val);
+    if (index > -1) {
+      arr.splice(index, 1);
+    }
+    return arr;
+  }
+
+  const removeUserAssociation = (associationId: string) => {
+    if (currentUser?.subscribedAssociations) {
+      removeItem(currentUser?.subscribedAssociations, associationId);
+			UserServices.update(currentUser);
+			localStorage.setItem("user", JSON.stringify(currentUser));
+      setCurrentUser(currentUser);
+      componentContext?.retrieveAssociationsList();
+		} else {
+			return;
+		}
+  }
 
   useEffect(() => {
-    const asso = getUserAssociations();
-    if (asso) {
-      setUserAssociations(asso)
-    };
+    const user = UserServices.getCurrentUser();
+    if (user) {
+      setCurrentUser(user);
+    } else {
+      setCurrentUser(undefined);
+    }
     componentContext?.retrieveAssociationsList();
   }, []);
 
@@ -27,7 +43,7 @@ const UserAssociations: React.FC = () => {
     <div className="user-causes-list-container">
       <h2 className="delete-label">Associations you are giving to:</h2>
       {associations.filter(asso => {
-          if (userAssociations.indexOf(asso._id!) !== -1) return asso
+          if (currentUser?.subscribedAssociations?.includes(asso._id!)) return asso
         }).map((association: any) => {
           const {_id, name, description, link, category, continent, country, logo, address } = association;
           return(
@@ -42,7 +58,10 @@ const UserAssociations: React.FC = () => {
                 <a className="user-cause-text" href={link} target="_blank" rel="noopener noreferrer">{link}</a>
                 <p className="cause-number">Eth address: {address}</p>
               </div>
-              <p className="user-cause-text">{description}</p>
+              <div className="user-cause-right-container">
+                <p className="user-cause-text">{description}</p>
+                <button className="deleteFormButton" onClick={() => removeUserAssociation(_id)}>Remove</button>
+              </div>
             </div>
           );
         })

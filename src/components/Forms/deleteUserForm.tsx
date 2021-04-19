@@ -34,7 +34,7 @@ const DeleteUserForm: React.FC = () => {
 
   return(
     <div className="delete-container">
-      <h2 className="delete-label">Delete user</h2>
+      <h2 className="delete-label">Delete user:</h2>
       {status === "SUCCESS" ? <p className="form-result">User account deleted, see you soon</p> : <button onClick={toggleConfirmation} className="deleteFormButton" type="submit">Delete account</button>}
       {status === "ERROR" && <p className="form-result-error">There was an error, please try later.</p>}
       {displayConfirmation 
