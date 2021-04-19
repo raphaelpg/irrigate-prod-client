@@ -85,12 +85,14 @@
 }
 
 .manage-container {
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-self: start;
 }
 .manageAssociation-button {
-  margin: 10px auto 15px 0;
-  padding: 5px 30px;
-  width: 100%;
+  padding: 0 50px;
+  margin: auto;
+  /* width: 100%; */
   height: 30px;
   font-weight: 600;
   background-color: orangered;
@@ -101,7 +103,7 @@
   outline: none;
   transition: all 0.5s;
   font-size: 0.8rem;
-  box-shadow: $standardShadow;
+  box-shadow: 3px 3px 10px 0px grey;
 }
 .manageAssociation-button:hover{
   cursor: pointer;

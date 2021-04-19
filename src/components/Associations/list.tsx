@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import { IAppContext, AppContext } from '../../context/AppContext';
 import FadeIn from '../../effects/FadeIn';
 import { IAssociation } from '../../interfaces/Association';
@@ -20,11 +20,12 @@ const List: React.FC<IListProps> = (props) => {
 		if (user) {
 			const newUser = user;
 			newUser.subscribedAssociations?.push(associationId);
-			setUser(newUser);
 			UserServices.update(newUser);
 			localStorage.setItem("user", JSON.stringify(newUser));
+			setUser(newUser);
+			componentContext?.retrieveAssociationsList();
 		} else {
-			return;
+			navigate("/login");
 		}
 	}
 	
