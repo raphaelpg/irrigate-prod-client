@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'gatsby';
 import { IAppContext, AppContext } from '../../context/AppContext';
 import FadeIn from '../../effects/FadeIn';
 import { IAssociation } from '../../interfaces/Association';
@@ -19,8 +20,8 @@ const List: React.FC<IListProps> = (props) => {
 		if (user) {
 			const newUser = user;
 			newUser.subscribedAssociations?.push(associationId);
-			setUser(newUser)
-			UserServices.update(newUser)
+			setUser(newUser);
+			UserServices.update(newUser);
 			localStorage.setItem("user", JSON.stringify(newUser));
 		} else {
 			return;
@@ -31,8 +32,10 @@ const List: React.FC<IListProps> = (props) => {
 		componentContext?.retrieveAssociationsList();
 		const user = UserServices.getCurrentUser();
 		if (user) {
-			setUser(user)
-    };
+			setUser(user);
+    } else {
+			setUser(undefined);
+		}
 	}, []);
 
 	if (associations != undefined) {
@@ -66,7 +69,13 @@ const List: React.FC<IListProps> = (props) => {
 									<p className="cause-number">Monthly donations: 1500 DAI</p>
 									<p className="cause-number">Total funds raised: 23500 DAI</p>
 									<p className="cause-number">Eth address: {address}</p>
-									<button className="add-cause-to-your-list-button" name={_id} onClick={() => addAssociation(_id!)} >Add association to your donation stream</button>
+									{ user?.subscribedAssociations?.includes(_id!) ? (
+										<div className="manage-container">
+											<Link className="manageAssociation-button" to="/account">Manage</Link>
+										</div>
+									) : (
+										<button className="add-cause-to-your-list-button" name={_id} onClick={() => addAssociation(_id!)} >Add association to your donation stream</button>
+									) }
 							</FadeIn>
 						);
 					}

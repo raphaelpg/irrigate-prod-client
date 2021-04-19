@@ -15,7 +15,7 @@ const Header: React.FC<IHeaderProps> = ({ siteTitle = '' }) => {
     setCurrentUser(undefined);
     setTimeout(() => {
       navigate('/')
-    }, 1000)
+    }, 500)
   };
 
   useEffect(() => {

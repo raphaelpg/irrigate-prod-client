@@ -1,6 +1,6 @@
 .causes-list-container{
   width: $causeListWidth;
-  min-height: 100vh;
+  // min-height: 100vh;
   margin: 20px auto;
   display: flex;
   flex-direction: row;
@@ -82,4 +82,30 @@
   background-color: $irrigateFontColor;
   color: $irrigateBackground;
   border: 1px solid $irrigateBackground;
+}
+
+.manage-container {
+  margin: auto;
+}
+.manageAssociation-button {
+  margin: 10px auto 15px 0;
+  padding: 5px 30px;
+  width: 100%;
+  height: 30px;
+  font-weight: 600;
+  background-color: orangered;
+  color: beige;
+  border: 1px solid orangered;
+  border-radius: 15px;
+  letter-spacing: 1px;
+  outline: none;
+  transition: all 0.5s;
+  font-size: 0.8rem;
+  box-shadow: $standardShadow;
+}
+.manageAssociation-button:hover{
+  cursor: pointer;
+  background-color: $irrigateFontColor;
+  color: orangered;
+  border: 1px solid orangered;
 }
