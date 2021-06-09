@@ -7,10 +7,12 @@ const SERVER = {
   updateAssociation: '/api/association/update',
   getUser: '/api/user',
   signUp: '/api/user/add',
-	 logIn: '/api/user/login',
-  updateUser: '/api/user/updateSubscriptions',
+	logIn: '/api/user/login',
   deleteUser: '/api/user/delete',
-  sendMessage: '/api/message/add'
+	updateUser: '/api/user/updateSubscriptions',
+  sendMessage: '/api/message/add',
+	sendDonation: '/api/donation/add',
+	deleteDonation: '/api/donation/delete'
 };
 
 // const SERVER = {
@@ -25,8 +27,19 @@ const SERVER = {
 // 	logIn: '/api/user/login',
 //   deleteUser: '/api/user/delete',
 // 	updateUser: '/api/user/updateSubscriptions',
-//   sendMessage: '/api/message/add'
+//   sendMessage: '/api/message/add',
+// 	sendDonation: '/api/donation/add',
+// 	deleteDonation: '/api/donation/delete'
 // };
+
+const WEB3 = {
+	erc20Name: "dai",
+	erc20Address: "0x001B3B4d0F3714Ca98ba10F6042DaEbF0B1B7b6F", // Mumbai DAI ERC20 address
+	irrigateAddress: "0x24e8bC880dAca5828572Ec9dB122Bd9966FE63be", // Mumbai Irrigate deployed address
+	// networkId: 137 //Matic
+	// networkId: 5777, //Ganache 7545
+	networkId: 80001, //Mumbai
+};
 
 const CATEGORIES = [
 	'All', 
@@ -62,6 +75,7 @@ const FILTERS = [
 const config = {
   server: SERVER,
 	filters: FILTERS,
+	web3: WEB3
 };
 
 export default config;
