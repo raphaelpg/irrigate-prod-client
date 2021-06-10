@@ -27,6 +27,7 @@
     "@types/react-helmet": "^6.1.0",
     "@types/web3": "^1.2.2",
     "@types/webpack-env": "^1.16.0",
+    "electron": "^13.1.2",
     "prettier": "2.2.1"
   },
   "keywords": [
