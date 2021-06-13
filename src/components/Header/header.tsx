@@ -32,6 +32,7 @@ const Header: React.FC<IHeaderProps> = ({ siteTitle = '' }) => {
     <div className="header-elements-container">
       <Brand siteTitle={siteTitle} />
       <div className="header-right-container">
+        <Link className="header-link" to="/try">Try It</Link>
         <Link className="header-link" to="/about">About</Link>
         <Link className="header-link" to="/contact">Contact Us</Link>
         { currentUser ? (

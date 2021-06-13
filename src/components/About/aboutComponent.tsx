@@ -7,28 +7,27 @@ const About: React.FC = () => {
       <div className="about-section">
         <h2 className="about-title">The Project</h2>
         <p className="about-paragraphe">
-          The project was first published during a hackathon, and is now a prototype for a real case application.
           Irrigate is a platform that aims to gather NGOs and associatons with donors from around the world.
           NGOs and associations can apply to appear in the main page after going through a validation process.
-          Donors can register and see all the NGOs and associations available for donations. Because its purpose is global,
-          the donations are meant to be sent via crypto currencies like Dai and xDai.
-          </p>
+          Donors can register and see all the NGOs and associations available for donations.<br></br>
+          Because its purpose is to provide global visibility, the donations are meant to be sent via crypto currencies to reduce international transfer costs and intermediaries issues.
+          Irrigate retains 1% of the donations to support the costs of activities.<br></br>
+          The project was first published during a hackathon, and is now a prototype for a real case application.
+        </p>
       </div> 
       <div className="about-section">
         <h2 className="about-title">Road Map</h2>
         <p className="about-paragraphe">
           <input type="checkbox" id="0" disabled checked></input>
-          <label htmlFor="0"> Deploy server and database</label><br></br>
+          <label htmlFor="0"> Deploy server and database: NodeJS server and NOSQL MongoDB Atlas database</label><br></br>
           <input type="checkbox" id="1" disabled checked></input>
-          <label htmlFor="1"> Deploy client</label><br></br>
-          <input type="checkbox" id="2" disabled></input>
-          <label htmlFor="2"> Develop responsive version</label><br></br>
-          <input type="checkbox" id="3" disabled></input>
-          <label htmlFor="3"> Add DAI payment module (Polygon)</label><br></br>
+          <label htmlFor="1"> Deploy client: Gatsby React framework</label><br></br>
+          <input type="checkbox" id="2" disabled checked></input>
+          <label htmlFor="3"> Add DAI payment module: Solidity Smart Contract deployed on Polygon testnet (Mumbai)</label><br></br>
+          <input type="checkbox" id="4" disabled></input>
+          <label htmlFor="3"> Add DAI monthly redistribution function (Polygon)</label><br></br>
           <input type="checkbox" id="4" disabled></input>
           <label htmlFor="4"> Add onboarding module for associations</label><br></br>
-          <input type="checkbox" id="6" disabled></input>
-          <label htmlFor="6"> Purchase design</label><br></br>
           <input type="checkbox" id="7" disabled></input>
           <label htmlFor="7"> Start registering associations campaign</label><br></br>
         </p>
