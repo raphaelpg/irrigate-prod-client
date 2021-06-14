@@ -24,6 +24,7 @@ Purpose:
 * [TypeScript](https://www.typescriptlang.org/docs/handbook/intro.html) - By understanding JavaScript, TypeScript saves you time catching errors and providing fixes before you run code. - v4.2.3  
 * [Sass](https://sass-lang.com/documentation) - Sass is a stylesheet language that’s compiled to CSS - v1.32.6  
 * [web3.js](https://web3js.readthedocs.io/en/v1.3.4/) - web3.js is a collection of libraries that allow you to interact with a local or remote ethereum node using HTTP, IPC or WebSocket - v1.3.6  
+* [Matic/Polygon](https://docs.matic.network/) - Polygon is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks    
 
 
 ## Authors
